@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 , maximum-scale=1.0, user-scalable=0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Electro.</title>
+
+    <meta name="title" content="" />
+    <meta name="description" content="" />
+    <meta name="keyword" content="" />
+
+    <link rel="canonical" href="" />
+    <link rel="icon" href="favicon.ico" />
+
+    <!-- Meta Tag Facebook -->
+    <meta property="og:locale" content="en" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:site_name" content="" />
+    <meta property="og:image" content="" />
+
+    <!-- Meta Tag Twitter -->
+    <meta name="twitter:card" content="" />
+    <meta name="twitter:site" content="" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:description" content="" />
+    <meta name="twitter:image" content="" />
+
+    <style>
+      /* CSS Loading Here */
+      .loading {
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--color-black);
+        position: fixed;
+        z-index: 999;
+        display: flex;
+        /* flex-direction: column; */
+        align-items: center;
+        justify-content: center;
+      }
+      .loading.--is-loaded {
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.4s;
+      }
+      .loading .loading__inner {
+        margin-top: 20px;
+        margin-left: 2px;
+        width: 140px;
+        height: 8px;
+        border-radius: 10px;
+        background-color: white;
+        overflow: hidden;
+      }
+      .loading .loading__inner .loading__inner-progress {
+        width: 0%;
+        height: 100%;
+        background-color: var(--color-main);
+      }
+      .loading .loading__percent {
+        margin-top: 16px;
+        margin-left: 20px;
+
+        font-family: mm;
+        font-size: 18px;
+        letter-spacing: 1.5px;
+        color: white;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="dest/style.min.css" />
+    <link rel="stylesheet" href="dest/fonts.css" />
+  </head>
+
+  <body class="">
+    <!-- Progress bar  -->
+    <div class="progressbar"></div>
+    <!--End  Progress bar  -->
+
+    <!-- Loading... -->
+    <div class="loading">
+      <img src="/img/electro-logo.png" alt="" />
+
+      <div class="loading__inner">
+        <div class="loading__inner-progress"></div>
+      </div>
+      <span class="loading__percent">0%</span>
+    </div>
+    <!--End Loading...  -->
+
+    <header class="header">
+      <div class="header__top">
+        <div class="container">
+          <div class="header__list">
+            <a href="#" class="item">
+              <div class="item__logo">
+                <i class="fa-solid fa-phone icon"></i>
+              </div>
+              <p class="item__text">+021-95-51-84</p>
+            </a>
+            <a href="#" class="item">
+              <div class="item__logo">
+                <i class="fa-regular fa-envelope"></i>
+              </div>
+              <p class="item__text">email@email.com</p>
+            </a>
+            <a href="#" class="item">
+              <div class="item__logo">
+                <i class="fa-solid fa-location-dot icon"></i>
+              </div>
+              <p class="item__text">1734 Stonecoal Road</p>
+            </a>
+          </div>
+          <div class="header__admin">
+            <div class="header__admin-logo">
+              <i class="fa-regular fa-user"></i>
+            </div>
+            <p class="header__admin-text">
+              <a style="color: #fff; cursor: pointer" href="/login.html"
+                >Login</a
+              >
+            </p>
+            <div class="header__admin-out" style="cursor: pointer">
+              <i class="fa-solid fa-arrow-right-from-bracket icon"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- porgressbar -->
+      <div class="progressbar"></div>
+    </header>
+    <!-- Nav bar -->
+    <nav class="nav --black" style="border: none">
+      <div class="container">
+        <ul class="nav__list">
+          <li class="nav__list-item">
+            <a href="/" class="is-active">Home</a>
+          </li>
+          <li class="nav__list-item">
+            <a href="#" class="color-white">Hot Deals</a>
+          </li>
+          <li class="nav__list-item">
+            <a href="#" class="color-white">Categories</a>
+          </li>
+          <li class="nav__list-item">
+            <a href="#" class="color-white">Laptops</a>
+          </li>
+          <li class="nav__list-item">
+            <a href="#" class="color-white">Smartphones</a>
+          </li>
+          <li class="nav__list-item">
+            <a href="#" class="color-white">Cameras</a>
+          </li>
+          <li class="nav__list-item">
+            <a href="#" class="color-white">Accessories</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- main -->
+    <main class="main">
+      <section class="checkoutLayout">
+        <div class="container">
+          <div class="returnCart">
+            <a href="/" class="btn">Keep shopping</a>
+            <div class="boxhead">
+              <h2 class="heading --lv2">List Product In Cart</h2>
+            </div>
+            <div class="list">
+              <div class="item">
+                <img src="img/scproducts-img-1.jpg" alt="" />
+                <div class="info">
+                  <div class="name">Product 1</div>
+                  <div class="price">$22</div>
+                </div>
+                <p class="quangtity">1</p>
+                <p class="returnPrice">$50</p>
+                <div class="btnDelete">Xoa</div>
+              </div>
+            </div>
+          </div>
+          <div class="right">
+            <p class="title">CHECKOUT</p>
+            <div class="form">
+              <div class="group">
+                <label for="">Full Name</label>
+                <input type="text" name="" id="" />
+              </div>
+              <div class="group">
+                <label for="">Phone Number</label>
+                <input type="text" name="" id="" />
+              </div>
+              <div class="group">
+                <label for="">Address</label>
+                <input type="text" name="" id="" />
+              </div>
+              <div class="group">
+                <label for="">Country</label>
+                <select name="" id="">
+                  <option value="">Viet Nam</option>
+                  <option value="">America</option>
+                  <option value="">China</option>
+                </select>
+              </div>
+              <div class="group">
+                <label for="">City</label>
+                <select name="" id="">
+                  <option value="">TP. HCM</option>
+                  <option value="">LA</option>
+                  <option value="">Bac Kinh</option>
+                </select>
+              </div>
+              <div class="return">
+                <div class="row">
+                  <h3>Total Quantity:</h3>
+                  <p class="totalQuantity">60</p>
+                </div>
+                <div class="row">
+                  <h3>Total Price:</h3>
+                  <p class="totalPrice">$50</p>
+                </div>
+              </div>
+              <a class="btnCheckout" >CHECK OUT </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Javascipt -->
+
+    <script src="dest/jsmain.min.js"></script>
+    <script src="dest/checkout.js"></script>
+  </body>
+</html>

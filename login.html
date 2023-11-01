@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 , maximum-scale=1.0, user-scalable=0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Electro.</title>
+
+    <meta name="title" content="" />
+    <meta name="description" content="" />
+    <meta name="keyword" content="" />
+
+    <link rel="canonical" href="" />
+    <link rel="icon" href="favicon.ico" />
+
+    <!-- Meta Tag Facebook -->
+    <meta property="og:locale" content="en" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:site_name" content="" />
+    <meta property="og:image" content="" />
+
+    <!-- Meta Tag Twitter -->
+    <meta name="twitter:card" content="" />
+    <meta name="twitter:site" content="" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:description" content="" />
+    <meta name="twitter:image" content="" />
+
+    <style>
+      /* CSS Loading Here */
+      .loading {
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--color-black);
+        position: fixed;
+        z-index: 999;
+        display: flex;
+        /* flex-direction: column; */
+        align-items: center;
+        justify-content: center;
+      }
+      .loading.--is-loaded {
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.4s;
+      }
+      .loading .loading__inner {
+        margin-top: 20px;
+        margin-left: 2px;
+        width: 140px;
+        height: 8px;
+        border-radius: 10px;
+        background-color: white;
+        overflow: hidden;
+      }
+      .loading .loading__inner .loading__inner-progress {
+        width: 0%;
+        height: 100%;
+        background-color: var(--color-main);
+      }
+      .loading .loading__percent {
+        margin-top: 16px;
+        margin-left: 20px;
+
+        font-family: mm;
+        font-size: 18px;
+        letter-spacing: 1.5px;
+        color: white;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="dest/style.min.css" />
+    <link rel="stylesheet" href="dest/fonts.css" />
+  </head>
+
+  <body class="loginPage">
+    <main class="main">
+      <section class="sclogin">
+        <div class="boxhead">
+          <h2 class="heading --lv2">Login!</h2>
+          <div class="des">Wellcome back you've been missed!</div>
+        </div>
+        <form onsubmit="login(event)">
+            <div class="input__field">
+                <input type="text" id="username" placeholder="Enter username" />
+            </div>
+            <div class="input__field">
+                <input type="password" id="password" placeholder="Password" />
+            </div>
+            <div class="signIn">
+                <button type="submit" class="signIn__btn">Sign In</button>
+            </div>
+        </form>
+        <div class="or">Or continue with</div>
+        <div class="list">
+            <a href="#" class="list__item" target="_blank">
+                <i class="fa-brands fa-google icon"></i>
+            </a>
+            <a href="#" class="list__item" target="_blank">
+                <i class="fa-brands fa-facebook-f icon"></i>
+            </a>
+            <a href="#" class="list__item" target="_blank">
+                <i class="fa-brands fa-twitter icon" ></i>
+            </a>
+        </div>
+        <div class="register">
+            Not a member? <a href="/signup.html">Sign up now</a>
+        </div>
+      </section>
+    </main>
+    <script src="dest/jsmain.min.js"></script>
+    <script src="dest/login.js"></script>
+  </body>
+</html>

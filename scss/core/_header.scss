@@ -1,0 +1,115 @@
+.header {
+  position: sticky;
+  width: 100%;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  &__top {
+    background: var(--color-gray);
+    padding: 0px 0;
+    .container {
+      padding-top: 1px;
+      padding-bottom:1px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  &__list {
+    display: flex;
+    gap: 15px;
+    .item {
+      display: flex;
+      font-size: 1.2rem;
+      gap: 5px;
+      color: var(--color-main);
+      &__text {
+        color: var(--color-white);
+        font-family: mm;
+      }
+    }
+  }
+  &__admin {
+    font-size: 1.2rem;
+    display: flex;
+    gap: 5px;
+    color: var(--color-main);
+    &-text {
+      color: var(--color-white);
+      font-family: mm;
+    }
+  }
+
+  &__bottom {
+    // padding: 8px 0;
+    background: var(--color-black);
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  &__search {
+    font-size: 1.4rem;
+    &-select {
+      padding: 0px 15px;
+      background: #fff;
+      border: 1px solid #e4e7ed;
+      height: 40px;
+      margin-right: -4px;
+      border-radius: 40px 0px 0px 40px;
+    }
+    &-input {
+      width: 295px;
+      margin-right: -4px;
+      height: 40px;
+      padding: 0px 15px;
+      border: 1px solid #e4e7ed;
+      background-color: #fff;
+    }
+    &-btn {
+      font-family: mb;
+      height: 40px;
+      width: 100px;
+      background: #d10024;
+      color: #fff;
+      font-weight: 700;
+      border: none;
+      border-radius: 0px 40px 40px 0px;
+    }
+  }
+  &__shop {
+    display: flex;
+    align-items: center;
+    padding-right: 15px;
+    gap: 35px;
+    font-size: 1.2rem;
+    color: #fff;
+    &-item {
+      cursor: pointer;
+      width: 90px;
+      position: relative;
+      .icon {
+        font-size: 1.8rem;
+      }
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      .totalQuantity {
+        display: inline-block;
+        position: absolute;
+        right: 12px;
+        top: -10px;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        border-radius: 50%;
+        font-size: 10px;
+        color: #fff;
+        background-color: #d10024;
+      }
+    }
+  }
+}

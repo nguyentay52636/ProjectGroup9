@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 , maximum-scale=1.0, user-scalable=0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Electro.</title>
+
+    <meta name="title" content="" />
+    <meta name="description" content="" />
+    <meta name="keyword" content="" />
+
+    <link rel="canonical" href="" />
+    <link rel="icon" href="favicon.ico" />
+
+    <!-- Meta Tag Facebook -->
+    <meta property="og:locale" content="en" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:site_name" content="" />
+    <meta property="og:image" content="" />
+
+    <!-- Meta Tag Twitter -->
+    <meta name="twitter:card" content="" />
+    <meta name="twitter:site" content="" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:description" content="" />
+    <meta name="twitter:image" content="" />
+
+    <style>
+      /* CSS Loading Here */
+      .loading {
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--color-black);
+        position: fixed;
+        z-index: 999;
+        display: flex;
+        /* flex-direction: column; */
+        align-items: center;
+        justify-content: center;
+      }
+      .loading.--is-loaded {
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.4s;
+      }
+      .loading .loading__inner {
+        margin-top: 20px;
+        margin-left: 2px;
+        width: 140px;
+        height: 8px;
+        border-radius: 10px;
+        background-color: white;
+        overflow: hidden;
+      }
+      .loading .loading__inner .loading__inner-progress {
+        width: 0%;
+        height: 100%;
+        background-color: var(--color-main);
+      }
+      .loading .loading__percent {
+        margin-top: 16px;
+        margin-left: 20px;
+
+        font-family: mm;
+        font-size: 18px;
+        letter-spacing: 1.5px;
+        color: white;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="dest/style.min.css" />
+    <link rel="stylesheet" href="dest/fonts.css" />
+  </head>
+
+  <body class="homepage">
+    <!-- Loading... -->
+    <div class="loading">
+      <img src="/img/electro-logo.png" alt="" />
+
+      <div class="loading__inner">
+        <div class="loading__inner-progress"></div>
+      </div>
+      <span class="loading__percent">0%</span>
+    </div>
+    <!--End Loading...  -->
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header__top">
+        <div class="container">
+          <div class="header__list">
+            <a href="#" class="item">
+              <div class="item__logo">
+                <i class="fa-solid fa-phone icon"></i>
+              </div>
+              <p class="item__text">+021-95-51-84</p>
+            </a>
+            <a href="#" class="item">
+              <div class="item__logo">
+                <i class="fa-regular fa-envelope"></i>
+              </div>
+              <p class="item__text">email@email.com</p>
+            </a>
+            <a href="#" class="item">
+              <div class="item__logo">
+                <i class="fa-solid fa-location-dot icon"></i>
+              </div>
+              <p class="item__text">1734 Stonecoal Road</p>
+            </a>
+          </div>
+          <div class="header__admin">
+            <div class="header__admin-logo">
+              <i class="fa-regular fa-user"></i>
+            </div>
+            <p class="header__admin-text"><a style="color: #fff; cursor: pointer;" href="/login.html">Login</a></p>
+            <div class="header__admin-out" style="cursor: pointer;"><i class="fa-solid fa-arrow-right-from-bracket icon"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="header__bottom">
+        <div class="container">
+          <a href="/" class="header__logo">
+            <img src="img/electro-logo.png" alt="#" />
+          </a>
+   
+          <div class="header__shop">
+            <div class="header__shop-item">
+              <i class="fa-sharp fa-regular fa-heart icon"></i>
+              <span> Your Wishlist </span>
+            </div>
+            <div class="header__shop-item --cart">
+              <div class="totalQuantity"></div>
+              <i class="fa-solid fa-cart-shopping icon"></i>
+              <span> Your Cart </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- porgressbar -->
+      <div class="progressbar"></div>
+    </header>
+    <!--End Header -->
+
+    <!-- Nav bar -->
+    <nav class="nav">
+      <div class="container">
+        <ul class="nav__list">
+          <li class="nav__list-item">
+            <a href="#" class="is-active">Home</a>
+          </li>
+          <li class="nav__list-item">
+            <a href="#">Hot Deals</a>
+          </li>
+          <li class="nav__list-item">
+            <a href="#">Categories</a>
+          </li>
+          <li class="nav__list-item">
+            <a href="#">Laptops</a>
+          </li>
+          <li class="nav__list-item">
+            <a href="#">Smartphones</a>
+          </li>
+          <li class="nav__list-item">
+            <a href="#">Cameras</a>
+          </li>
+          <li class="nav__list-item">
+            <a href="#">Accessories</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!--End Nav bar -->
+
+
+    <!-- main -->
+    <main class="main">
+      <section class="schero">
+        <div class="schero__list">
+          <div class="schero__list-item">
+            <div class="container">
+              <div class="boxhead">
+                <h1 class="heading --lv1">
+                  <span>This is</span>
+                  iPhone 7
+                </h1>
+                <p class="des">
+                  The ship set ground on the shore of this uncharted desert isle
+                  <br />
+                  with Gilligan the Skipper too the millionaire and his story.
+                </p>
+              </div>
+              <div class="btns">
+                <a href="#" class="btns__price"> $776.99 </a>
+                <a href="#" class="btns__shop"> Shop now </a>
+              </div>
+              <div class="priceOld">$976.83</div>
+            </div>
+            <div class="img">
+              <img src="/img/banner-3.png" alt="" />
+            </div>
+          </div>
+          <div class="schero__list-item">
+            <div class="container">
+              <div class="boxhead">
+                <h1 class="heading --lv1">
+                  <span>This is</span>
+                  Samsung A50
+                </h1>
+                <p class="des">
+                  The ship set ground on the shore of this uncharted desert isle
+                  <br />
+                  with Gilligan the Skipper too the millionaire and his story.
+                </p>
+              </div>
+              <div class="btns">
+                <a href="#" class="btns__price"> $676.93 </a>
+                <a href="#" class="btns__shop"> Shop now </a>
+              </div>
+              <div class="priceOld">$878.83</div>
+            </div>
+            <div class="img">
+              <img src="/img/schero-banner-1.jpg" alt="" />
+            </div>
+          </div>
+          <div class="schero__list-item">
+            <div class="container">
+              <div class="boxhead --center">
+                <h1 class="heading --lv1">
+                  <span>Welcome to</span>
+                  Electro
+                  <span>.</span>
+                </h1>
+                <p class="des">
+                  The ship set ground on the shore of this uncharted desert isle
+                  <br />
+                  with Gilligan the Skipper too the millionaire and his story.
+                </p>
+              </div>
+              <div class="btns --center">
+                <a href="#" class="btns__shop"> Shop now </a>
+              </div>
+            </div>
+            <div class="img">
+              <img src="/img/banner-1.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="scproducts">
+        <div class="container">
+          <div class="boxhead">
+            <h2 class="heading --lv2">NEW PRODUCTS</h2>
+            <div class="tabs">
+              <a href="#" class="--is-active">IPHONE</a>
+              <a href="#">SAMSUNG</a>
+            </div>
+          </div>
+
+          <form class="filter">
+            <div class="item">
+              <label for="category">Category: </label>
+              <select name="category">
+                  <option value="">---</option>
+                  <option value="Iphone">Iphone</option>
+                  <option value="Samsung">Samsung</option>
+              </select>
+            </div>
+            <div class="item">
+              <label for="minPrice">Min Price: $ </label>
+              <input type="number" name="minPrice">
+            </div>
+            <div class="item">
+              <label for="maxPrice">Max Price: $ </label>
+              <input type="number" name="maxPrice">
+            </div>
+            <div class="item">
+              <label for="name">Name: </label>
+              <input type="text" name="name">
+            </div>
+            <div class="item --submit">
+              <button>Search</button>
+            </div>
+          </form>
+          <div class="countResults">
+            Found <b id="count">5</b> results
+          </div>
+
+          <div class="scproducts__list">
+            <div class="item">
+              <div class="img">
+                <img src="img/scproducts-img-1.jpg" alt="" />
+                <div class="label">
+                  <span class="label__discount">-30%</span>
+                  <span class="label__tag">NEW</span>
+                </div>
+              </div>
+              <div class="content">
+                <span class="des">CATEGORY</span>
+                <h3 class="title">IPHONE 14</h3>
+                <div class="prices">
+                  <span class="prices__new">$1,400</span>
+                  <span class="prices__old">$1,959</span>
+                </div>
+                <div class="rating">
+                  <i class="fa-solid fa-star icon"></i>
+                  <i class="fa-solid fa-star icon"></i>
+                  <i class="fa-solid fa-star icon"></i>
+                  <i class="fa-solid fa-star icon"></i>
+                  <i class="fa-solid fa-star icon"></i>
+                </div>
+                <div class="btns">
+                  <div class="btns__icon">
+                    <i class="fa-regular fa-heart icon"></i>
+                  </div>
+                  <div class="btns__icon">
+                    <i class="fa-solid fa-arrow-right-arrow-left icon"></i>
+                  </div>
+                  <div class="btns__icon">
+                    <i class="fa-solid fa-eye icon"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="cart">
+                <button class="cart__btn">
+                  <i class="fa-solid fa-cart-shopping icon"></i>
+                  <span>ADD TO CART</span>
+                </button>
+              </div>
+            </div>
+            <div class="item">
+              <div class="img">
+                <img src="img/scproducts-img-1.jpg" alt="" />
+                <div class="label">
+                  <span class="label__discount">-30%</span>
+                  <span class="label__tag">NEW</span>
+                </div>
+              </div>
+              <div class="content">
+                <span class="des">CATEGORY</span>
+                <h3 class="title">IPHONE 14</h3>
+                <div class="prices">
+                  <span class="prices__new">$1,400</span>
+                  <span class="prices__old">$1,959</span>
+                </div>
+                <div class="rating">
+                  <i class="fa-solid fa-star icon"></i>
+                  <i class="fa-solid fa-star icon"></i>
+                  <i class="fa-solid fa-star icon"></i>
+                  <i class="fa-solid fa-star icon"></i>
+                  <i class="fa-solid fa-star icon"></i>
+                </div>
+                <div class="btns">
+                  <div class="btns__icon">
+                    <i class="fa-regular fa-heart icon"></i>
+                  </div>
+                  <div class="btns__icon">
+                    <i class="fa-solid fa-arrow-right-arrow-left icon"></i>
+                  </div>
+                  <div class="btns__icon">
+                    <i class="fa-solid fa-eye icon"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="cart">
+                <div class="cart__btn">
+                  <i class="fa-solid fa-cart-shopping icon"></i>
+                  <span>ADD TO CART</span>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="img">
+                <img src="img/scproducts-img-1.jpg" alt="" />
+                <div class="label">
+                  <span class="label__discount">-30%</span>
+                  <span class="label__tag">NEW</span>
+                </div>
+              </div>
+              <div class="content">
+                <span class="des">CATEGORY</span>
+                <h3 class="title">IPHONE 14</h3>
+                <div class="prices">
+                  <span class="prices__new">$1,400</span>
+                  <span class="prices__old">$1,959</span>
+                </div>
+                <div class="rating">
+                  <i class="fa-solid fa-star icon"></i>
+                  <i class="fa-solid fa-star icon"></i>
+                  <i class="fa-solid fa-star icon"></i>
+                  <i class="fa-solid fa-star icon"></i>
+                  <i class="fa-solid fa-star icon"></i>
+                </div>
+                <div class="btns">
+                  <div class="btns__icon">
+                    <i class="fa-regular fa-heart icon"></i>
+                  </div>
+                  <div class="btns__icon">
+                    <i class="fa-solid fa-arrow-right-arrow-left icon"></i>
+                  </div>
+                  <div class="btns__icon">
+                    <i class="fa-solid fa-eye icon"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="cart">
+                <div class="cart__btn">
+                  <i class="fa-solid fa-cart-shopping icon"></i>
+                  <span>ADD TO CART</span>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="img">
+                <img src="img/scproducts-img-1.jpg" alt="" />
+                <div class="label">
+                  <span class="label__discount">-30%</span>
+                  <span class="label__tag">NEW</span>
+                </div>
+              </div>
+              <div class="content">
+                <span class="des">CATEGORY</span>
+                <h3 class="title">IPHONE 14</h3>
+                <div class="prices">
+                  <span class="prices__new">$1,400</span>
+                  <span class="prices__old">$1,959</span>
+                </div>
+                <div class="rating">
+                  <i class="fa-solid fa-star icon"></i>
+                  <i class="fa-solid fa-star icon"></i>
+                  <i class="fa-solid fa-star icon"></i>
+                  <i class="fa-solid fa-star icon"></i>
+                  <i class="fa-solid fa-star icon"></i>
+                </div>
+                <div class="btns">
+                  <div class="btns__icon">
+                    <i class="fa-regular fa-heart icon"></i>
+                  </div>
+                  <div class="btns__icon">
+                    <i class="fa-solid fa-arrow-right-arrow-left icon"></i>
+                  </div>
+                  <div class="btns__icon">
+                    <i class="fa-solid fa-eye icon"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="cart">
+                <div class="cart__btn">
+                  <i class="fa-solid fa-cart-shopping icon"></i>
+                  <span>ADD TO CART</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="listPage">
+          </ul>
+        </div>
+      </section>
+
+      <section
+        class="schotdeal"
+        style="
+          background: url('img/banner-5.jpg') no-repeat center / cover;
+          background-attachment: fixed;
+        "
+      >
+        <div class="container">
+          <div class="schotdeal__list">
+            <div class="schotdeal__list-item">
+              <span>02</span>
+              DAYS
+            </div>
+            <div class="schotdeal__list-item">
+              <span>10</span>
+              HOURS
+            </div>
+            <div class="schotdeal__list-item">
+              <span>34</span>
+              MINS
+            </div>
+            <div class="schotdeal__list-item">
+              <span>60</span>
+              SECS
+            </div>
+          </div>
+          <div class="boxhead --center">
+            <h2 class="heading --lv2">HOT DEAL THIS WEAK</h2>
+            <p class="des">New Collection Up to 50% OFF</p>
+          </div>
+          <div class="btn">Shop now</div>
+        </div>
+      </section>
+
+      <section
+        class="scevent"
+        style="
+          background: url('img/banner-5.jpg') no-repeat center / cover;
+          background-attachment: fixed;
+        "
+      >
+        <div class="container">
+          <div class="scevent__list">
+            <div class="scevent__list-item" data-video="BH1CiUVn4tg">
+              <div class="img">
+                <img src="img/scvideo-1.png" alt="" />
+              </div>
+            </div>
+
+            <div class="scevent__list-item" data-video="9S7SDqT4nFI">
+              <div class="img">
+                <img src="img/scvideo-2.png" alt="" />
+              </div>
+            </div>
+
+            <div class="scevent__list-item" data-video="yqRREDiEW6Q">
+              <div class="img">
+                <img src="img/scvideo-3.png" alt="" />
+              </div>
+            </div>
+            <div class="scevent__list-item" data-video="Jwne-iVDo5M">
+              <div class="img">
+                <img src="img/scvideo-5.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section class="scservice">
+        <div class="container">
+          <div class="scservice__list">
+            <div class="scservice__list-item">
+              <div class="img">
+                <img src="img/scservice-icon-1.png" alt="" />
+              </div>
+              <h3 class="title">Worldwide Shipping</h3>
+              <p class="des">Free Shipping On Order Over $100</p>
+            </div>
+            <div class="scservice__list-item">
+              <div class="img">
+                <img src="img/scservice-icon-2.png" alt="" />
+              </div>
+              <h3 class="title">Order Online Service</h3>
+              <p class="des">Free return products in 30 days</p>
+            </div>
+            <div class="scservice__list-item">
+              <div class="img">
+                <img src="img/scservice-icon-3.png" alt="" />
+              </div>
+              <h3 class="title">Payment</h3>
+              <p class="des">Secure System</p>
+            </div>
+            <div class="scservice__list-item">
+              <div class="img">
+                <img src="img/scservice-icon-4.png" alt="" />
+              </div>
+              <h3 class="title">Return 30 Days</h3>
+              <p class="des">Free return products in 30 days</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="scsign">
+        <div class="container">
+          <div class="boxhead --center">
+            <h2 class="heading --lv2">
+              Sign Up for the
+              <span>NEWSLETTER</span>
+            </h2>
+          </div>
+          <div class="scsign__form">
+            <form action="">
+              <input
+                type="email"
+                placeholder="Enter Your Email"
+                class="input"
+              />
+              <button class="button">
+                <i class="fa-solid fa-envelope"></i> Email
+              </button>
+            </form>
+          </div>
+          <div class="scsign__list">
+            <a href="#" target="_blank" class="scsign__list-item">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="#" target="_blank" class="scsign__list-item">
+              <i class="fa-brands fa-twitter"></i>
+            </a>
+            <a href="#" target="_blank" class="scsign__list-item">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="#" target="_blank" class="scsign__list-item">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__menu">
+          <div class="footer__menu-item">
+            <a href="#" class="img">
+              <img src="img/electro-logo.png" alt="" />
+            </a>
+            <div class="call">
+              <img src="img/call-footer.png" alt="" />
+              <p class="des">
+                Got Questions ? Call us 24/7!
+                <br />
+                <span> Call Us: (888) 1234 56789</span>
+                <br />
+                PO Box CT16122 Collins Street West, Victoria 8007, Australia.
+              </p>
+            </div>
+            <div class="contact">
+              <a href="#" class="contact__item">
+                <i class="fa-solid fa-phone icon"></i>
+                <p class="text">+021-95-51-84</p>
+              </a>
+              <a href="#" class="contact__item">
+                <i class="fa-regular fa-envelope icon"></i>
+                <p class="text">email@email.com</p>
+              </a>
+              <a href="#" class="contact__item">
+                <i class="fa-solid fa-location-dot icon"></i>
+                <p class="text">1734 Stonecoal Road</p>
+              </a>
+            </div>
+          </div>
+          <div class="footer__menu-item">
+            <p class="title">CATEGORIES</p>
+            <ul class="list">
+              <li class="list__item">
+                <a href="#" class="choice">Hot deals</a>
+              </li>
+              <li class="list__item">
+                <a href="#" class="choice">Laptops</a>
+              </li>
+              <li class="list__item">
+                <a href="#" class="choice">Smartphones</a>
+              </li>
+              <li class="list__item">
+                <a href="#" class="choice">Cameras</a>
+              </li>
+              <li class="list__item">
+                <a href="#" class="choice">Accessories</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer__menu-item">
+            <p class="title">INFORMATION</p>
+            <ul class="list">
+              <li class="list__item">
+                <a href="#" class="choice">About Us</a>
+              </li>
+              <li class="list__item">
+                <a href="#" class="choice">Contact Us</a>
+              </li>
+              <li class="list__item">
+                <a href="#" class="choice">Contact Us</a>
+              </li>
+              <li class="list__item">
+                <a href="#" class="choice">Orders and Returns</a>
+              </li>
+              <li class="list__item">
+                <a href="#" class="choice">Terms & Conditions</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer__menu-item">
+            <p class="title">SERVICE</p>
+            <ul class="list">
+              <li class="list__item">
+                <a href="#" class="choice">My Account</a>
+              </li>
+              <li class="list__item">
+                <a href="#" class="choice">View Cart</a>
+              </li>
+              <li class="list__item">
+                <a href="#" class="choice">Wishlist</a>
+              </li>
+              <li class="list__item">
+                <a href="#" class="choice">Track My Order</a>
+              </li>
+              <li class="list__item">
+                <a href="#" class="choice">Help</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__pay">
+          <a href="#" class="footer__menu-item">
+            <img src="img/pay-1.png" alt="" />
+          </a>
+          <a href="#" class="footer__menu-item">
+            <img src="img/pay-2.png" alt="" />
+          </a>
+          <a href="#" class="footer__menu-item">
+            <img src="img/pay-3.png" alt="" />
+          </a>
+          <a href="#" class="footer__menu-item">
+            <img src="img/pay-4.png" alt="" />
+          </a>
+          <a href="#" class="footer__menu-item">
+            <img src="img/pay-55.png" alt="" />
+          </a>
+        </div>
+      </div>
+    </footer>
+    <div class="footer__bottom">
+      <div class="text">All Rights Reserved © Electro.</div>
+      <div class="btnScroll">
+        <i class="fa-solid fa-arrow-up icon"></i>
+      </div>
+    </div>
+    <!-- Javascipt -->
+
+    <!-- Popup -->
+    <div class="popup">
+      <div class="popup__video">
+        <div class="popup__video-frame">
+          <iframe
+            width="100%"
+            height="100%"
+            src=""
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+          <div class="iconClose">
+            <img src="img/close-icon.svg" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End Popup -->
+
+    <div class="cartNav">
+      <div class="boxhead">
+        <h2 class="heading --lv2">Cart</h2>
+      </div>
+      <div class="listCart">
+        <div class="item">
+          <div class="img">
+            <img src="img/scproducts-img-1.jpg" alt="" />
+          </div>
+          <div class="content">
+            <div class="name">Product Name</div>
+            <div class="price">450/1 product</div>
+          </div>
+          <div class="quantity">
+            <button class="oper">-</button>
+            <span class="value">3</span>
+            <button class="oper">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="buttons">
+        <div class="buttons__item close">CLOSE</div>
+        <a href="/checkout.html" class="buttons__item --checkout">
+          CHECK OUT
+        </a>
+      </div>
+    </div>
+
+    <script src="dest/jsmain.min.js"></script>
+    <script src="dest/main.js"></script>
+
+  </body>
+</html>

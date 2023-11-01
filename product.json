@@ -1,0 +1,167 @@
+[
+    {
+     "id": "1",
+     "name": "iphoneX",
+     "price": "1000",
+     "screen": "screen 68",
+     "backCamera": "2 camera 12 MP",
+     "frontCamera": "7 MP",
+     "img": "https://cdn.tgdd.vn/Products/Images/42/114115/iphone-x-64gb-hh-600x600.jpg",
+     "desc": "Thiết kế mang tính đột phá",
+     "type": "Iphone"
+    },
+    {
+     "id": "2",
+     "name": "Samsung Galaxy M51 ",
+     "price": 3500,
+     "screen": "screen 69",
+     "backCamera": " Chính 64 MP & Phụ 12 MP, 5 MP, 5 MP",
+     "frontCamera": " 32 MP",
+     "img": "https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-new-600x600-600x600.jpg",
+     "desc": "Thiết kế đột phá, màn hình tuyệt đỉnh",
+     "type": "Samsung"
+    },
+    {
+     "id": "3",
+     "name": "Samsung Galaxy M22",
+     "price": 45000,
+     "screen": "screen 70",
+     "backCamera": "Chính 12 MP & Phụ 64 MP, 12 MP",
+     "frontCamera": " 32 MP",
+     "img": "https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-new-600x600-600x600.jpg",
+     "desc": "Thiết kế mang tính đột phá",
+     "type": "Samsung"
+    },
+    {
+     "id": "4",
+     "name": "Iphone 11",
+     "price": 1000,
+     "screen": "screen 54",
+     "backCamera": "Camera: Chính 12 MP & Phụ 64 MP, 12 MP",
+     "frontCamera": "32 MP",
+     "img": "https://cdn.viettelstore.vn/Images/Product/ProductImage/286885732.jpeg",
+     "desc": "Thiết kế đột phá, màn hình tuyệt đỉnh",
+     "type": "Iphone"
+    },
+    {
+     "id": "5",
+     "name": "iPhone 13 Pro",
+     "price": "1200",
+     "screen": "screen 68",
+     "backCamera": "Chính 12 MP & Phụ 12 MP",
+     "frontCamera": "12 MP",
+     "img": "https://cdn.tgdd.vn/Products/Images/42/230521/iphone-13-pro-thumb-600x600.jpg",
+     "desc": "Hiệu năng cao cấp và camera mạnh mẽ.",
+     "type": "Iphone"
+    },
+    {
+     "id": "6",
+     "name": "Samsung Galaxy S23",
+     "price": 1300,
+     "screen": "screen 69",
+     "backCamera": "Chính 108 MP & Phụ 12 MP, 12 MP",
+     "frontCamera": "32 MP",
+     "img": "https://cdn.tgdd.vn/Products/Images/42/264060/samsung-galaxy-s23-600x600.jpg",
+     "desc": "Đột phá trong thiết kế và hiệu năng.",
+     "type": "Samsung"
+    },
+    {
+     "id": "7",
+     "name": "iPhone 14",
+     "price": "1400",
+     "screen": "screen 70",
+     "backCamera": "Chính 16 MP & Phụ 12 MP",
+     "frontCamera": "12 MP",
+     "img": "https://cdn.tgdd.vn/Products/Images/42/289700/iphone-14-pro-max-den-thumb-600x600.jpg",
+     "desc": "Sự tiếp nối của dòng iPhone với nhiều cải tiến.",
+     "type": "Iphone"
+    },
+    {
+     "id": "8",
+     "name": "Samsung Galaxy Z Fold 4",
+     "price": 1800,
+     "screen": "screen 7.6 inches (chính), 6.2 inches (phụ)",
+     "backCamera": "Chính 12 MP & Phụ 12 MP",
+     "frontCamera": "10 MP",
+     "img": "https://chiemtaimobile.vn/images/detailed/44/samsung-galaxy-z-fold-4.jpg",
+     "desc": "Smartphone gập mới với màn hình phụ lớn hơn.",
+     "type": "Samsung"
+    },
+    {
+     "id": "9",
+     "name": "iPhone SE Plus 2022",
+     "price": 799,
+     "screen": "screen 5.5 inches",
+     "backCamera": "12 MP",
+     "frontCamera": "7 MP",
+   "img": "https://cdn.tgdd.vn/Files/2022/01/18/1411433/apple-iphone-se-3-2022-front-back-980x1024_800x835.jpg",
+     "desc": "Phiên bản lớn của iPhone SE với giá phải chăng.",
+     "type": "Iphone"
+    },
+    {
+     "id": "10",
+     "name": "Samsung Galaxy A74",
+     "price": 599,
+     "screen": "screen 6.5 inches",
+     "backCamera": "Chính 64 MP & Phụ 12 MP, 5 MP, 5 MP",
+     "frontCamera": "32 MP",
+     "img": "https://cdn.tgdd.vn/Products/Images/42/298376/samsung-galaxy-a74-600x600.jpg",
+     "desc": "Giải pháp giá trị trong dòng Galaxy A.",
+     "type": "Samsung"
+    },
+    {
+     "id": "11",
+     "name": "iPhone 14 Pro Max",
+     "price": "1500",
+     "screen": "screen 6.7 inches",
+     "backCamera": "Chính 16 MP & Phụ 12 MP",
+     "frontCamera": "12 MP",
+     "img": "https://cdn.tgdd.vn/Products/Images/42/251192/iphone-14-pro-max-tim-thumb-600x600.jpg",
+     "desc": "iPhone cao cấp với hiệu năng và tính năng hàng đầu.",
+     "type": "Iphone"
+    },
+    {
+     "id": "12",
+     "name": "Samsung Galaxy Tab S8",
+     "price": "799",
+     "screen": "screen 11 inches",
+     "backCamera": "Chính 13 MP & Phụ 5 MP",
+     "frontCamera": "8 MP",
+     "img": "https://cdn.tgdd.vn/Products/Images/522/247510/Samsung-Galaxy-tab-s8-black-thumb-600x600.jpg",
+     "desc": "Máy tính bảng cao cấp với hiệu năng mạnh mẽ.",
+     "type": "Samsung"
+    },
+    {
+     "id": "13",
+     "name": "iPhone 14 Mini",
+     "price": "1200",
+     "screen": "screen 5.4 inches",
+     "backCamera": "Chính 16 MP & Phụ 12 MP",
+     "frontCamera": "12 MP",
+     "img": "https://specificationsplus.com/wp-content/uploads/2022/05/iPhone-14-mini-Specifications-Plus.jpg",
+     "desc": "Phiên bản nhỏ gọn của iPhone 14 với hiệu năng mạnh mẽ.",
+     "type": "Iphone"
+    },
+    {
+     "id": "15",
+     "name": "iPhone SE 3rd Gen",
+     "price": "699",
+     "screen": "screen 4.7 inches",
+     "backCamera": "12 MP",
+     "frontCamera": "7 MP",
+     "img": "https://cdn-amz.woka.io/images/I/61A0Zu4K-TL.jpg",
+     "desc": "Sự trở lại của iPhone SE với giá phải chăng và hiệu năng ổn định.",
+     "type": "Iphone"
+    },
+    {
+     "id": "16",
+     "name": "Samsung Galaxy Z Flip 5",
+     "price": "1800",
+     "screen": "screen 6.7 inches (chính), 1.9 inches (phụ)",
+     "backCamera": "Chính 12 MP & Phụ 12 MP",
+     "frontCamera": "10 MP",
+     "img": "https://images.samsung.com/vn/smartphones/galaxy-z-flip5/buy/product_color_mint.png",
+     "desc": "Smartphone gập mới với màn hình lớn.",
+     "type": "Samsung"
+    }
+   ]

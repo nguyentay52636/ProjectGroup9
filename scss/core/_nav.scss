@@ -1,0 +1,72 @@
+.nav {
+  backdrop-filter: blur(2px);
+  background: #fff;
+  border-top: 3px solid #d10024;
+
+  transition: background 0.3s;
+  &__list {
+    display: flex;
+
+    &-item {
+      cursor: pointer;
+      padding: 0 10px;
+
+      font-family: mm;
+      transition: 0.2s all;
+      &:hover {
+        a {
+          color: var(--color-main);
+          &::after {
+            transform: scaleX(1);
+            transform-origin: left;
+          }
+        }
+      }
+      .color-white {
+        color: #fff;
+      }
+      a {
+        display: inline-block;
+        padding: 10px 0;
+        font-size: 1.4rem;
+        color: var(--color-text);
+        transition: 0.2s all;
+        position: relative;
+        &::after {
+          content: "";
+          width: 100%;
+          height: 1.5px;
+          position: absolute;
+          bottom: 9.5px;
+          left: 0;
+          background: var(--color-main);
+          transition: 0.3s transform;
+          transform: scale(0);
+          transform-origin: right;
+        }
+
+        &.is-active {
+          color: var(--color-main);
+        }
+        &.--is-active {
+          color: #fff;
+        }
+      }
+      &:nth-child(1) {
+        padding-left: 0;
+      }
+    }
+  }
+  &.--is-active {
+    background: none;
+    backdrop-filter: blur(50px);
+  }
+  &.--black {
+    background-color: var(--color-gray);
+    position: sticky;
+    width: 100%;
+    z-index: 50;
+    top: 0;
+    left: 0;
+  }
+}

@@ -1,0 +1,63 @@
+:root {
+	/* MaxWidth Of Page, Container-Fluid, Container, Gutter*/
+
+	--max-width-page: 2560px;
+	--max-width-container-fluid: 1920px;
+	--max-width-container: calc(1200px + calc(var(--gap) * 2)); // 1200px tuỳ thuộc bản thiết kế */
+
+	--gap: 30px; // Tuỳ vào thiết kế
+
+	/* Colors Variable Demo*/
+	--color-gray: #1E1F29;
+	--color-main: #D10024;
+	--color-red:#e84f59;
+	--color-white: #ffffff;
+	--color-black: #15161D;
+	--color-text: #2B2D42;
+	--color-text-gray: #8D99AE;
+	--color-green: #49d8b9;
+
+	// Fontsize - Lineheight Variable Demo
+	--fs-h1: 9rem;
+	--lh1-h1: 10rem;
+
+	--fs-h2: 8.5rem;
+	--lh1-h2: 9rem;
+
+	--fs-body: 1.8rem;
+	--lh-body: 2rem;
+
+	// General Variable Demo
+	--height-header: 88px;
+	--height-button: 42px;
+	--pd-section: 120px;
+
+	// Timing Transition Variable Demo
+	--duration: 0.4s;
+	--cubic: cubic-bezier(0.59, 0.29, 0.15, 0.93);
+
+	// Responsive
+	@include md {
+		--container-max-width: 1140px;
+	}
+	@include sm {
+		--container-max-width: 960px; // hoặc max-width: 100% tuỳ yêu cầu
+	}
+	@include xs {
+		--container-max-width: 720px; // hoặc max-width: 100% tuỳ yêu cầu
+		--gap: 16px;
+
+		// DEMO
+		--fs-h1: 6rem;
+		--lh1-h1: 6.8rem;
+
+		--fs-h2: 5.5rem;
+		--lh1-h2: 6.2rem;
+
+		--fs-body: 1.7rem;
+		--lh-body: 1.9rem;
+	}
+	@include xxs {
+		--container-max-width: 100%;
+	}
+}

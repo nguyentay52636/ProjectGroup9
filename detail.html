@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 , maximum-scale=1.0, user-scalable=0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Electro.</title>
+
+    <meta name="title" content="" />
+    <meta name="description" content="" />
+    <meta name="keyword" content="" />
+
+    <link rel="canonical" href="" />
+    <link rel="icon" href="favicon.ico" />
+
+    <!-- Meta Tag Facebook -->
+    <meta property="og:locale" content="en" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:site_name" content="" />
+    <meta property="og:image" content="" />
+
+    <!-- Meta Tag Twitter -->
+    <meta name="twitter:card" content="" />
+    <meta name="twitter:site" content="" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:description" content="" />
+    <meta name="twitter:image" content="" />
+
+    <style>
+      /* CSS Loading Here */
+      .loading {
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--color-black);
+        position: fixed;
+        z-index: 999;
+        display: flex;
+        /* flex-direction: column; */
+        align-items: center;
+        justify-content: center;
+      }
+      .loading.--is-loaded {
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.4s;
+      }
+      .loading .loading__inner {
+        margin-top: 20px;
+        margin-left: 2px;
+        width: 140px;
+        height: 8px;
+        border-radius: 10px;
+        background-color: white;
+        overflow: hidden;
+      }
+      .loading .loading__inner .loading__inner-progress {
+        width: 0%;
+        height: 100%;
+        background-color: var(--color-main);
+      }
+      .loading .loading__percent {
+        margin-top: 16px;
+        margin-left: 20px;
+
+        font-family: mm;
+        font-size: 18px;
+        letter-spacing: 1.5px;
+        color: white;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="dest/style.min.css" />
+    <link rel="stylesheet" href="dest/fonts.css" />
+  </head>
+
+  <body class="">
+    <!-- Loading... -->
+    <!-- <div class="loading">
+      <img src="/img/electro-logo.png" alt="" />
+
+      <div class="loading__inner">
+        <div class="loading__inner-progress"></div>
+      </div>
+      <span class="loading__percent">0%</span>
+    </div> -->
+    <!--End Loading...  -->
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header__top">
+        <div class="container">
+          <div class="header__list">
+            <a href="#" class="item">
+              <div class="item__logo">
+                <i class="fa-solid fa-phone icon"></i>
+              </div>
+              <p class="item__text">+021-95-51-84</p>
+            </a>
+            <a href="#" class="item">
+              <div class="item__logo">
+                <i class="fa-regular fa-envelope"></i>
+              </div>
+              <p class="item__text">email@email.com</p>
+            </a>
+            <a href="#" class="item">
+              <div class="item__logo">
+                <i class="fa-solid fa-location-dot icon"></i>
+              </div>
+              <p class="item__text">1734 Stonecoal Road</p>
+            </a>
+          </div>
+          <div class="header__admin">
+            <div class="header__admin-logo">
+              <i class="fa-regular fa-user"></i>
+            </div>
+            <p class="header__admin-text"><a style="color: #fff; cursor: pointer;" href="/login.html">Login</a></p>
+            <div class="header__admin-out" style="cursor: pointer;"><i class="fa-solid fa-arrow-right-from-bracket icon"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="header__bottom">
+        <div class="container">
+          <a href="/" class="header__logo">
+            <img src="img/electro-logo.png" alt="#" />
+          </a>
+   
+          <div class="header__shop">
+            <div class="header__shop-item">
+              <i class="fa-sharp fa-regular fa-heart icon"></i>
+              <span> Your Wishlist </span>
+            </div>
+            <div class="header__shop-item --cart">
+              <div class="totalQuantity"></div>
+              <i class="fa-solid fa-cart-shopping icon"></i>
+              <span> Your Cart </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- porgressbar -->
+      <div class="progressbar"></div>
+    </header>
+    <!--End Header -->
+
+    <!-- Nav bar -->
+    <!-- <nav class="nav --black">
+      <div class="container">
+        <ul class="nav__list">
+          <li class="nav__list-item">
+            <a href="/" class="is-active">Home</a>
+          </li>
+          <li class="nav__list-item">
+            <a href="#" class="color-white">Hot Deals</a>
+          </li>
+          <li class="nav__list-item">
+            <a href="#" class="color-white">Categories</a>
+          </li>
+          <li class="nav__list-item">
+            <a href="#" class="color-white">Laptops</a>
+          </li>
+          <li class="nav__list-item">
+            <a href="#" class="color-white">Smartphones</a>
+          </li>
+          <li class="nav__list-item">
+            <a href="#" class="color-white">Cameras</a>
+          </li>
+          <li class="nav__list-item">
+            <a href="#" class="color-white">Accessories</a>
+          </li>
+        </ul>
+      </div>
+    </nav> -->
+    <!--End Nav bar -->
+
+    <!-- main -->
+    <main class="main">
+      <section class="scdetail">
+        <div class="container">
+          <div class="boxhead --center">
+            <h1 class="heading --lv2">PRODUCT DEATIL</h1>
+          </div>
+          <div class="detail">
+            <div class="image">
+              <img src="" alt="" />
+            </div>
+            <div class="content">
+              <h1 class="name"></h1>
+              <div class="rating">
+                <i class="fa-solid fa-star icon"></i>
+                <i class="fa-solid fa-star icon"></i>
+                <i class="fa-solid fa-star icon"></i>
+                <i class="fa-solid fa-star icon"></i>
+                <i class="fa-solid fa-star icon"></i>
+                <span> 10 Review(s) | Add your review</span>
+              </div>
+              <p class="price"></p>
+              <p class="description textDes"></p>
+              <p class="frontCamera textDes"></p>
+              <p class="backCamera textDes"></p>
+              <div class="buttons">
+                <a href="/checkout.html">
+                  <button class="buttons__btn">
+                    <i class="fa-solid fa-circle-check"></i>CHECK OUT
+                  </button>
+                </a>
+                <button class="buttons__btn addToCart">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  ADD TO CART
+                </button>
+              </div>
+              <div class="content__addto">
+                <a href="#" class="content__addto-item">
+                  <i class="fa-regular fa-heart icon"></i>
+                  add to wishlist
+                </a>
+                <a href="#" class="content__addto-item">
+                  <i class="fa-solid fa-arrow-right-arrow-left icon"></i>
+                  add to compare
+                </a>
+              </div>
+              <p class="category"></p>
+              <div class="content__social">
+                <span>SHARE: </span>
+                <a href="#" target="_blank" class="content__social-item">
+                  <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="#" target="_blank" class="content__social-item">
+                  <i class="fa-brands fa-twitter"></i>
+                </a>
+                <a href="#" target="_blank" class="content__social-item">
+                  <i class="fa-solid fa-envelope"></i>
+                </a>
+                <a href="#" target="_blank" class="content__social-item">
+                  <i class="fa-brands fa-google-plus-g"></i>
+                </a>
+              </div>
+              <a href="/" class="btn">
+                Keep shopping
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="scsimilar">
+        <div class="container">
+          <div class="boxhead --center">
+            <h2 class="heading --lv2">OTHER RELATED PRODUCTS</h2>
+          </div>
+          <div class="scproducts__list"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__menu">
+          <div class="footer__menu-item">
+            <a href="#" class="img">
+              <img src="img/electro-logo.png" alt="" />
+            </a>
+            <div class="call">
+              <img src="img/call-footer.png" alt="" />
+              <p class="des">
+                Got Questions ? Call us 24/7!
+                <br />
+                <span> Call Us: (888) 1234 56789</span>
+                <br />
+                PO Box CT16122 Collins Street West, Victoria 8007, Australia.
+              </p>
+            </div>
+            <div class="contact">
+              <a href="#" class="contact__item">
+                <i class="fa-solid fa-phone icon"></i>
+                <p class="text">+021-95-51-84</p>
+              </a>
+              <a href="#" class="contact__item">
+                <i class="fa-regular fa-envelope icon"></i>
+                <p class="text">email@email.com</p>
+              </a>
+              <a href="#" class="contact__item">
+                <i class="fa-solid fa-location-dot icon"></i>
+                <p class="text">1734 Stonecoal Road</p>
+              </a>
+            </div>
+          </div>
+          <div class="footer__menu-item">
+            <p class="title">CATEGORIES</p>
+            <ul class="list">
+              <li class="list__item">
+                <a href="#" class="choice">Hot deals</a>
+              </li>
+              <li class="list__item">
+                <a href="#" class="choice">Laptops</a>
+              </li>
+              <li class="list__item">
+                <a href="#" class="choice">Smartphones</a>
+              </li>
+              <li class="list__item">
+                <a href="#" class="choice">Cameras</a>
+              </li>
+              <li class="list__item">
+                <a href="#" class="choice">Accessories</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer__menu-item">
+            <p class="title">INFORMATION</p>
+            <ul class="list">
+              <li class="list__item">
+                <a href="#" class="choice">About Us</a>
+              </li>
+              <li class="list__item">
+                <a href="#" class="choice">Contact Us</a>
+              </li>
+              <li class="list__item">
+                <a href="#" class="choice">Contact Us</a>
+              </li>
+              <li class="list__item">
+                <a href="#" class="choice">Orders and Returns</a>
+              </li>
+              <li class="list__item">
+                <a href="#" class="choice">Terms & Conditions</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer__menu-item">
+            <p class="title">SERVICE</p>
+            <ul class="list">
+              <li class="list__item">
+                <a href="#" class="choice">My Account</a>
+              </li>
+              <li class="list__item">
+                <a href="#" class="choice">View Cart</a>
+              </li>
+              <li class="list__item">
+                <a href="#" class="choice">Wishlist</a>
+              </li>
+              <li class="list__item">
+                <a href="#" class="choice">Track My Order</a>
+              </li>
+              <li class="list__item">
+                <a href="#" class="choice">Help</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__pay">
+          <a href="#" class="footer__menu-item">
+            <img src="img/pay-1.png" alt="" />
+          </a>
+          <a href="#" class="footer__menu-item">
+            <img src="img/pay-2.png" alt="" />
+          </a>
+          <a href="#" class="footer__menu-item">
+            <img src="img/pay-3.png" alt="" />
+          </a>
+          <a href="#" class="footer__menu-item">
+            <img src="img/pay-4.png" alt="" />
+          </a>
+          <a href="#" class="footer__menu-item">
+            <img src="img/pay-55.png" alt="" />
+          </a>
+        </div>
+      </div>
+    </footer>
+    <div class="footer__bottom">
+      <div class="text">All Rights Reserved © Electro.</div>
+      <div class="btnScroll">
+        <i class="fa-solid fa-arrow-up icon"></i>
+      </div>
+    </div>
+
+    <div class="cartNav">
+      <div class="boxhead">
+        <h2 class="heading --lv2">Cart</h2>
+      </div>
+      <div class="listCart">
+        <div class="item">
+          <div class="img">
+            <img src="img/scproducts-img-1.jpg" alt="" />
+          </div>
+          <div class="content">
+            <div class="name">Product Name</div>
+            <div class="price">450/1 product</div>
+          </div>
+          <div class="quantity">
+            <button class="oper">-</button>
+            <span class="value">3</span>
+            <button class="oper">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="buttons">
+        <div class="buttons__item close">CLOSE</div>
+        <a href="/checkout.html" class="buttons__item --checkout">
+          CHECK OUT
+        </a>
+      </div>
+    </div>
+
+    <script src="dest/jsmain.min.js"></script>
+    <script src="dest/detail.js"></script>
+  </body>
+</html>

@@ -1,0 +1,219 @@
+// MIXINS
+// Laptop lớn, screen <= 1440px (tuỳ yêu cầu thiết kế)
+@mixin lg {
+	@media screen and (max-width: 1440px) {
+		@content;
+	}
+}
+// Laptop nhỏ hoặc tablet lớn, screen < 1200px
+@mixin md {
+	@media screen and (max-width: 1199.98px) {
+		@content;
+	}
+}
+// Tablets vừa, screen <= 992px
+@mixin sm {
+	@media screen and (max-width: 991.98px) {
+		@content;
+	}
+}
+// Tablets nhỏ hoặc Phones quay ngang, screen < 768px
+@mixin xs {
+	@media screen and (max-width: 767.98px) {
+		@content;
+	}
+}
+// Phones lớn, screen < 576px
+@mixin xxs {
+	@media screen and (max-width: 575.98px) {
+		@content;
+	}
+}
+// Phones nhỏ, screen < 376px - tuỳ yêu cầu
+@mixin xxxs {
+	@media screen and (max-width: 375.98px) {
+		@content;
+	}
+}
+
+// Landscape
+@mixin landscape {
+	@media screen and (orientation: landscape) {
+		@content;
+	}
+}
+
+// @media max, min
+@mixin maxW($args) {
+	@media (max-width: $args) {
+		@content;
+	}
+}
+@mixin minW($args) {
+	@media (min-width: $args) {
+		@content;
+	}
+}
+@mixin minH($args) {
+	@media (min-height: $args) {
+		@content;
+	}
+}
+@mixin maxH($args) {
+	@media (max-height: $args) {
+		@content;
+	}
+}
+
+// CSS Animation - Transition
+@mixin keyframes($animation-name) {
+	@-webkit-keyframes #{$animation-name} {
+		@content;
+	}
+	@-moz-keyframes #{$animation-name} {
+		@content;
+	}
+	@-ms-keyframes #{$animation-name} {
+		@content;
+	}
+	@-o-keyframes #{$animation-name} {
+		@content;
+	}
+	@keyframes #{$animation-name} {
+		@content;
+	}
+}
+
+@mixin animation($str) {
+	animation: #{$str};
+	-webkit-animation: #{$str};
+	-moz-animation: #{$str};
+	-ms-animation: #{$str};
+	-o-animation: #{$str};
+}
+@mixin animation-delay($str) {
+	animation-delay: #{$str};
+	-webkit-animation-delay: #{$str};
+	-moz-animation-delay: #{$str};
+	-ms-animation-delay: #{$str};
+	-o-animation-delay: #{$str};
+}
+@mixin transform($args) {
+	transform: $args;
+	-webkit-transform: $args;
+	-moz-transform: $args;
+	-ms-transform: $args;
+	-o-transform: $args;
+}
+
+@mixin transform-origin($args) {
+	transform-origin: $args;
+	-webkit-transform-origin: $args;
+	-moz-transform-origin: $args;
+	-ms-transform-origin: $args;
+	-o-transform-origin: $args;
+}
+@mixin transition-delay($args) {
+	transition-delay: $args;
+	-webkit-transition-delay: $args;
+	-moz-transition-delay: $args;
+	-ms-transition-delay: $args;
+	-o-transition-delay: $args;
+}
+@mixin transition($args) {
+	transition: $args;
+	-webkit-transition: $args;
+	-moz-transition: $args;
+	-ms-transition: $args;
+	-o-transition: $args;
+}
+
+// CSS Text
+@mixin text($font-family, $font-size, $line-height, $color, $text-transform: none) {
+	font-family: $font-family;
+	font-size: $font-size;
+	line-height: $line-height;
+	color: $color;
+	text-transform: $text-transform;
+}
+
+// Middle Object
+@mixin mid($flex: false) {
+	@if $flex == false {
+		top: 50%;
+		left: 50%;
+		@include transform(translate(-50%, -50%));
+		position: absolute;
+	} @else {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+// Frame Img
+@mixin frameimg($w, $h: $w) {
+	width: $w;
+	aspect-ratio: $w/$h;
+	position: relative;
+	overflow: hidden;
+}
+
+// Middle Img
+@mixin midimg {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+// FullScreen
+@mixin fullscreen($fixed: false) {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	@if $fixed {
+		position: fixed;
+	} @else {
+		position: absolute;
+	}
+}
+
+// Visible
+@mixin visible($param: 1) {
+	@if $param == 1 {
+		opacity: 1;
+		visibility: visible;
+	} @else {
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+
+// Size Div
+@mixin size($w, $h: $w, $circle: false) {
+	width: $w;
+	height: $h;
+	@if $circle {
+		border-radius: 100%;
+	}
+}
+// Overflow Text Dots
+@mixin overtext($lines) {
+	display: -webkit-inline-box;
+	-webkit-line-clamp: $lines;
+	-webkit-box-orient: vertical;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+// Customize Scroll Bar
+@mixin customscroll($width: 5px, $bgTrack: #ddd, $bgThumb: #121212) {
+	&::-webkit-scrollbar {
+		width: $width;
+	}
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: $bgThumb;
+	}
+}
