@@ -18,31 +18,45 @@ const getListProduct = () => {
 };
 getListProduct();
 
+function SearchProduct() {
+  const searchValue = $a('#searchProduct').value.toLowerCase();
+
+  const filteredProducts = products.filter((product) => {
+    return (
+      product.name.toLowerCase().includes(searchValue) ||
+      product.desc.toLowerCase().includes(searchValue) ||
+      product.type.toLowerCase().includes(searchValue)
+    );
+  });
+
+  renderProduct(filteredProducts);
+}
+$a('#searchProduct').addEventListener('input', SearchProduct);
+
 function renderProduct(data) {
   let table = $a('.DanhSachSanPham');
   let content = '';
   for (let i = 0; i < data.length; i++) {
     let Product = data[i];
+    const {id,name,price,screen,backCamera, frontCamera, img, desc,type} = Product
     content += `<tr >
-    <td>${i + 1}</td>
-    <td>${Product.name}</td>
-    <td>${Product.price}</td>
-    <td>${Product.screen}</td>
-    <td>${Product.backCamera}</td>
-    <td>${Product.frontCamera}</td>
+    <td>${id}</td>
+    <td>${name}</td>
+    <td>${price}</td>
+    <td>${screen}</td>
+    <td>${backCamera}</td>
+    <td>${frontCamera}</td>
     <td>
-    <img src="${Product.img}" alt="" width="50px" height="50px">
+    <img src="${img}" alt="" width="50px" height="50px">
     </td>
-    <td>${Product.desc}</td>
-     <td>${Product.type}</td>
+    <td>${desc}</td>
+     <td>${type}</td>
      <td> 
        
-     <button onclick="editProduct(${
-       Product.id
-     })" data-toggle="modal" data-target="#exampleModalCenter" style="border:none; background-color:transparent; padding-left:5px; font-size:22px; cursor: pointer;"><i class ="fa fa-pencil" ></i></button> 
-     <button onclick="deleteProduct(${
-       Product.id
-     })" style="border:none ; background-color:transparent; padding-left:5px; font-size:22px; cursor: pointer;"><i class="fa-solid fa-trash"></i></i>
+     <button keyProduct="${id}"
+      class="edit-button"  style="border:none; background-color:transparent; padding-left:5px; font-size:22px; cursor: pointer;"><i class ="fa fa-pencil" ></i></button> 
+     <button  keyProduct="${id}"  class="delete-button fa-solid fa-trash "
+     style="border:none ; background-color:transparent; padding-left:5px; font-size:22px; cursor: pointer;">
      </button>
    </td>
              </tr>`;
@@ -51,15 +65,15 @@ function renderProduct(data) {
 }
 
 function getInfo() {
-  var name = document.getElementById('name').value;
-  var price = document.getElementById('price').value;
-  var screen = document.getElementById('screen').value;
-  var backCamera = document.getElementById('backcamera').value;
-  var frontCamera = document.getElementById('frontcamera').value;
-  var img = document.getElementById('picture').value;
-  var desc = document.getElementById('desc').value;
-  var type = document.getElementById('type').value;
-  var InfoValue = {
+  const name = document.getElementById('name').value;
+  const price = document.getElementById('price').value;
+  const screen = document.getElementById('screen').value;
+  const backCamera = document.getElementById('backcamera').value;
+  const frontCamera = document.getElementById('frontcamera').value;
+  const img = document.getElementById('picture').value;
+  const desc = document.getElementById('desc').value;
+  const type = document.getElementById('type').value;
+  const InfoValue = {
     name: name,
     price: price,
     screen: screen,
@@ -71,7 +85,7 @@ function getInfo() {
   };
   return InfoValue;
 }
-const getInfoProduct = async () => {
+const getInfoProduct = () => {
   let Info = getInfo();
   let Product = new product(
     '',
@@ -84,25 +98,61 @@ const getInfoProduct = async () => {
     Info.desc,
     Info.type
   );
-  await addProduct(Product);
+  addProduct(Product);
 };
 async function addProduct(data) {
   try {
     const result = await api.addProduct(data);
     getListProduct();
-    resetForm();
     NotiAlert('success', 'Them thanh cong', 2000);
+    $a('#iconClose').click();
+    resetForm();
   } catch (error) {
     console.log(error);
   }
 }
 $a('#btnAdd').addEventListener('click', getInfoProduct);
 
-const imgView = () => {
-  let src = $a('#picture').value;
-  $a('#picture-preview').src = src;
-};
-$a('#picture').oninput = imgView();
+// function imgView() {
+//   let src = $a('#picture').value;
+//   $a('#picture-preview').src = src;
+// }
+// $a('#picture').oninput = imgView();
+
+async function deleteProduct(id) {
+  const result = await Swal.fire({
+    title: 'Bạn có chắc chắn muốn xóa sản phẩm?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Đồng ý',
+    cancelButtonText: 'Hủy',
+  });
+  if (result.isConfirmed) {
+    deleteProductAsync(id);
+  }
+}
+async function deleteProductAsync(id) {
+  try {
+    
+    let result = await api.deleteProduct(id);
+    getListProduct();
+    NotiAlert('success', 'Xóa thành công', 2000);
+  } catch (error) {
+    NotiAlert('Failed to delete product. Please try again.', 'error');
+  }
+}
+
+document.addEventListener('click', function (event) {
+  if (event.target.classList.contains('delete-button')) {
+    const productId = event.target.getAttribute('keyProduct');
+    deleteProduct(productId);
+  }
+});
+
+// $a('.edit-button').addEventListener('click', () => {
+//   $a('#myModal').style.display = 'block';
+//   resetForm();
+// });
 
 function NotiAlert(icon, title, timer) {
   Swal.fire({
@@ -111,6 +161,14 @@ function NotiAlert(icon, title, timer) {
     title: title,
     showConfirmButton: false,
     timer: timer,
+  });
+}
+
+function resetForm() {
+  const arrInput = $all('.form-group input');
+  const newArrInput = Array.from(arrInput);
+  newArrInput.map((input) => {
+    input.value = '';
   });
 }
 
@@ -151,10 +209,3 @@ function NotiAlert(icon, title, timer) {
 //   );
 //   await addProduct(Product);
 // };
-function resetForm() {
-  const arrInput = $a('.form-group input');
-  const newArrInput = Array.from(arrInput);
-  newArrInput.map((input) => {
-    input.value = '';
-  });
-}

@@ -447,4 +447,19 @@ line-height: 1.3;
 thead .headerTable {
   background-color:#006bcf;
   color:white;
+
+}
+.search__product {
+margin :25px ; 
+}
+.search__product p{
+padding-bottom: 25px;
+}
+.search__product input {
+  width: 100%;
+}
+.search__product i {
+  position: relative;
+  bottom: -28px;
+  left: 12px;
 }
