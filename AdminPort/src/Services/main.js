@@ -38,7 +38,17 @@ function renderProduct(data) {
   let content = '';
   for (let i = 0; i < data.length; i++) {
     let Product = data[i];
-    const {id,name,price,screen,backCamera, frontCamera, img, desc,type} = Product
+    const {
+      id,
+      name,
+      price,
+      screen,
+      backCamera,
+      frontCamera,
+      img,
+      desc,
+      type,
+    } = Product;
     content += `<tr >
     <td>${id}</td>
     <td>${name}</td>
@@ -54,7 +64,7 @@ function renderProduct(data) {
      <td> 
        
      <button keyProduct="${id}"
-      class="edit-button"  style="border:none; background-color:transparent; padding-left:5px; font-size:22px; cursor: pointer;"><i class ="fa fa-pencil" ></i></button> 
+      class="edit-button fa fa-pencil"  style="border:none; background-color:transparent; padding-left:5px; font-size:22px; cursor: pointer;"></button> 
      <button  keyProduct="${id}"  class="delete-button fa-solid fa-trash "
      style="border:none ; background-color:transparent; padding-left:5px; font-size:22px; cursor: pointer;">
      </button>
@@ -133,7 +143,6 @@ async function deleteProduct(id) {
 }
 async function deleteProductAsync(id) {
   try {
-    
     let result = await api.deleteProduct(id);
     getListProduct();
     NotiAlert('success', 'Xóa thành công', 2000);
@@ -142,10 +151,63 @@ async function deleteProductAsync(id) {
   }
 }
 
+// function infoEdit(product) {
+//   const { name, price, screen, backCamera, frontCamera, img, desc, type } =
+//     product;
+//   const productInputs = [
+//     { id: 'name', value: name },
+//     { id: 'price', value: price },
+//     { id: 'screen', value: screen },
+//     { id: 'backcamera', value: backCamera },
+//     { id: 'frontcamera', value: frontCamera },
+//     { id: 'picture', value: img },
+//     { id: 'desc', value: desc },
+//     { id: 'type', value: type },
+//   ];
+
+//   productInputs.map((input) => {
+//     document.getElementById(input.id).value = input.value;
+//   });
+//   const buttonEdit = $a('#btnAdd');
+//   buttonEdit.innerHTML = `<button class="btn btn-danger" onclick="editProduct(${product.id})" >Update edit</button>`;
+// }
+function infoEdit(product) {
+  document.getElementById('name').value = product.name;
+  document.getElementById('price').value = product.price;
+  document.getElementById('screen').value = product.screen;
+  document.getElementById('backcamera').value = product.backCamera;
+  document.getElementById('frontcamera').value = product.frontCamera;
+  document.getElementById('picture').value = product.img;
+  document.getElementById('desc').value = product.desc;
+  document.getElementById('type').value = product.type;
+  let buttonEdit = document.querySelector('#btnAdd');
+  buttonEdit.innerHTML = `<button style="backgroud-color:red"onclick="updateProduct(${product.id})"></button> <p>Update edit</p></button>`;
+  $a('#myModal').style.display = 'block';
+}
+function editProduct(id) {
+  var promise = api.getInfoProduct(id);
+  promise
+    .then(function (result) {
+      infoEdit(result.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+$a('#iconClose').onclick = () => {
+  resetForm();
+};
+$a('#myModal').onclick = () => {
+  resetForm();
+};
 document.addEventListener('click', function (event) {
-  if (event.target.classList.contains('delete-button')) {
-    const productId = event.target.getAttribute('keyProduct');
+  let isDeleteButton = event.target.classList.contains('delete-button');
+  let isEditButton = event.target.classList.contains('edit-button');
+  const productId = event.target.getAttribute('keyProduct');
+  if (isDeleteButton) {
     deleteProduct(productId);
+  } else if (isEditButton) {
+    editProduct(productId);
   }
 });
 

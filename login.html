@@ -93,7 +93,7 @@
           <h2 class="heading --lv2">Login!</h2>
           <div class="des">Wellcome back you've been missed!</div>
         </div>
-        <form onsubmit="login(event)">
+        <form>
             <div class="input__field">
                 <input type="text" id="username" placeholder="Enter username" />
             </div>
@@ -101,7 +101,7 @@
                 <input type="password" id="password" placeholder="Password" />
             </div>
             <div class="signIn">
-                <button type="submit" class="signIn__btn">Sign In</button>
+                <button type="button" class="btnLogin">Login now</button>
             </div>
         </form>
         <div class="or">Or continue with</div>
@@ -121,6 +121,9 @@
         </div>
       </section>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"></script>
     <script src="dest/jsmain.min.js"></script>
     <script src="dest/login.js"></script>
   </body>
