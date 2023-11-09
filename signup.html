@@ -93,7 +93,15 @@
           <h2 class="heading --lv2">Sign Up!</h2>
           <div class="des">Wellcome back you've been missed!</div>
         </div>
-        <form onsubmit="signup(event)">
+        <form>
+          <div class="input__field">
+            <input
+              type="text"
+              name=""
+              id="fullname"
+              placeholder="Enter fullname"
+            />
+          </div>
           <div class="input__field">
             <input
               type="text"
@@ -116,7 +124,7 @@
             />
           </div>
           <div class="signUp">
-            <button type="submit" class="signUp__btn">Sign Up</button>
+            <button type="button" class="signUp__btn">Sign Up</button>
           </div>
         </form>
         <div class="or">Or continue with</div>
@@ -137,7 +145,7 @@
       </section>
     </main>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"></script>
     <script src="dest/jsmain.min.js"></script>
     <script src="dest/signup.js"></script>
   </body>
