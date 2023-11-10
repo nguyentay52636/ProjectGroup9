@@ -25,7 +25,8 @@
         </div>
         <ul class="nav">
           <li>
-            <a><i class="fa fa-windows"></i><p class="text__logo"> Dashboard</p></a>
+            
+            <a href=".././index.html"><i class="fa fa-windows"></i><p class="text__logo"> Home pages</p></a>
           </li>
           <li class="active">
             <a><i class="fa fa-shopping-bag"></i><p class="text__logo">User</p></a>
@@ -221,15 +222,15 @@
         
               <input id="searchProduct" class="form-control" type="text" placeholder="Input infomation Smart Phone"> 
             </div>
-            <div id="myModal" class="modal">
+            <div id="myModal" class="modal" >
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
                     <span class="modal-title" id="exampleModalLongTitle"
                       >Information product</span
                     >
-                    <button type="button" class="close" onclick="closeModal()">
-                      <span id="iconClose">&times;</span>
+                    <button id="iconClose" type="button" class="close" >
+                      <span >&times;</span>
                     </button>
                   </div>
 
@@ -380,8 +381,8 @@
             <th scope="col" >Password</th>
             <th scope="col">Full name</th>
             <th scope="col">Email</th>
-            <th scope="col">Type acount</th>
-            <th scope="col" width="60px">Action</th>
+            <th scope="col" width="60px">Type acount</th>
+            <th scope="col" width="80px">Action</th>
           </tr>
         </thead>
         <tbody id="listAcount">
@@ -403,8 +404,8 @@
                     <span class="modal-title" id="exampleModalLongTitle"
                       >Information person</span
                     >
-                    <button type="button" class="close" onclick="closeModal()">
-                      <span id="iconClose">&times;</span>
+                    <button id="iconClose" type="button" class="close" >
+                      <span>&times;</span>
                     </button>
                   </div>
 
@@ -420,22 +421,12 @@
                       <br />
                       <span id="tb-namePerson"></span>
                     </div>
+                  
                     <div class="form-group">
                       <input
                         type="text"
                         class="form-control"
-                        id="passwordPerson"
-                        name="password"
-                        placeholder="Password"
-                      />
-                      <br />
-                      <span id="tb-password"></span>
-                    </div>
-                    <div class="form-group">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="fullname"
+                        id="fullnamePerson"
                         name="screen"
                         placeholder="Full name"
                       />
@@ -457,31 +448,35 @@
                       <input
                         type="text"
                         class="form-control"
-                        id="typeacount"
-                        name="typeacount"
-                        placeholder="Type acount"
+                        id="passwordPerson"
+                        name="password"
+                        placeholder="Password"
                       />
                       <br />
-                      <span id="tb-typeacount"></span>
+                      <span id="tb-password"></span>
                     </div>
+                    
                     
                   
                     <div class="form-group">
                     
-                      <select class="form-control" name="type" id="type">
+                      <select class="form-control" name="typeacount" id="typePerson">
                         <option value="">Type</option>
                         <option value="user">User</option>
                         <option value="admin">Admin</option>
                       </select>
                       <br />
-                      <span id="tb-type"></span>
+                      <span id="tb-typeacount"></span>
                     </div>
                     <!-- Các phần còn lại trong modal body -->
                   </div>
                   <div class="modal-footer">
-                  <div id="btnEdit"><button type="button" id="btnAddPerson" onclick="getInfoPerson()">
+                  <div id="btnEdit" >
+                    <button  type="button" id="btnAddPerson" >
                     Add
-                  </button></div>
+                  </button>
+                </div>
+                  
                   </div>
                 </div>
               </div>
@@ -556,21 +551,30 @@
           });
         }
       
-      function openModal() {
-      let  modal = document.getElementById('myModal');
-        modal.style.display = 'block';
-
-        // Đăng ký sự kiện click bên ngoài modal
-        window.addEventListener('click', function (event) {
-          if (event.target == modal) {
-            modal.style.display = 'none';
-          }
-        });
-      }
-     
-      $a('.close').onclick = () => {
-        var modal = document.getElementById('myModal');
+        function openModal() {
+          let modal = document.getElementById('myModal');
+          let modalPerson = $a('#myModalPerson');
+        
+          // Hiển thị cả hai modal
+          modal.style.display = 'block';
+          modalPerson.style.display = 'none';
+        
+          // Đăng ký sự kiện click bên ngoài modal
+          window.addEventListener('click', function (event) {
+            if (event.target == modal) {
+              // Ẩn cả hai modal nếu click bên ngoài
+              modal.style.display = 'none';
+              modalPerson.style.display = 'none';
+            }
+          });
+        }
+        
+   
+      $a('#iconClose').onclick = () => {
+        let modal = document.getElementById('myModal');
         modal.style.display = 'none';
+        let modalPerson =   $a('#myModalPerson');
+        modalPerson.style.display = 'none';
       };
       //tab
       $a('.btnCloseTab').addEventListener('click', () => {
@@ -606,7 +610,7 @@
       });
       
     </script>
-   <script type="module" src="./src/Services/renderListPerson.js"></script>
+   <!-- <script type="module" src="./src/Services/renderListPerson.js"></script> -->
     <script type="module" src="./src/Services/main.js"></script>
   </body>
 </html>

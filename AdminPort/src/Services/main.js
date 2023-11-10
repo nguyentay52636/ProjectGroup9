@@ -1,6 +1,11 @@
-import product from '../models/product.js';
+import Product from '../models/product.js';
 import CallApi from '../Controller/callApi.js';
-
+import {
+  getInfoPerson,
+  deletePerson,
+  editPerson,
+  updatePerson,
+} from './renderListPerson.js';
 const $a = document.querySelector.bind(document);
 const $all = document.querySelectorAll.bind(document);
 let api = new CallApi();
@@ -32,6 +37,7 @@ function SearchProduct() {
   renderProduct(filteredProducts);
 }
 $a('#searchProduct').addEventListener('input', SearchProduct);
+$a('#btnAddPerson').addEventListener('click', getInfoPerson);
 
 function renderProduct(data) {
   let table = $a('.DanhSachSanPham');
@@ -63,11 +69,9 @@ function renderProduct(data) {
      <td>${type}</td>
      <td> 
        
-     <button keyProduct="${id}"
-      class="edit-button fa fa-pencil"  style="border:none; background-color:transparent; padding-left:5px; font-size:22px; cursor: pointer;"></button> 
-     <button  keyProduct="${id}"  class="delete-button fa-solid fa-trash "
-     style="border:none ; background-color:transparent; padding-left:5px; font-size:22px; cursor: pointer;">
-     </button>
+     <button keyProduct="${id}" class="edit-button fa fa-pencil" style="border:none; background-color:transparent; padding-left:5px; font-size:22px; cursor: pointer;"></button>
+<button keyProduct="${id}" class="delete-button fa-solid fa-trash" style="border:none; background-color:transparent; padding-left:5px; font-size:22px; cursor: pointer;"></button>
+
    </td>
              </tr>`;
   }
@@ -130,17 +134,23 @@ function imgView() {
 $a('#picture').oninput = imgView();
 
 async function deleteProduct(id) {
+  // Hỏi người dùng xác nhận trước khi xóa
   const result = await Swal.fire({
     title: 'Bạn có chắc chắn muốn xóa sản phẩm?',
     icon: 'warning',
     showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
     confirmButtonText: 'Đồng ý',
     cancelButtonText: 'Hủy',
   });
+
   if (result.isConfirmed) {
+    // Nếu người dùng đồng ý, thực hiện xóa sản phẩm
     deleteProductAsync(id);
   }
 }
+
 async function deleteProductAsync(id) {
   try {
     let result = await api.deleteProduct(id);
@@ -181,9 +191,21 @@ function infoEdit(product) {
   document.getElementById('desc').value = product.desc;
   document.getElementById('type').value = product.type;
   let buttonEdit = document.querySelector('#btnEdit');
-  buttonEdit.innerHTML = `<button onclick="updateProduct(${product.id})">Update edit</button>`;
+  console.log(buttonEdit);
+  buttonEdit.innerHTML = `<button id="updateBtn" idProduct="${product.id}">Update edit</button>`;
   $a('#myModal').style.display = 'block';
 }
+$a('#myModal').addEventListener('click', (e) => {
+  const id = e.target.id;
+  switch (id) {
+    case 'updateBtn':
+      const idProduct = e.target.getAttribute('idProduct');
+      updateProduct(idProduct);
+    case 'updateBtnPerson':
+      const idPerson = e.target.getAttribute('idPeson');
+      updatePerson(idPerson);
+  }
+});
 function editProduct(id) {
   let promise = api.getInfoProduct(id);
   promise
@@ -200,45 +222,49 @@ $a('#iconClose').onclick = () => {
 // $a('#myModal').onclick = () => {
 //   resetForm();
 // };
-
 //update product
 function updateProduct(id) {
-  let Info = getInfo();
-  if (Info) {
-    var product = new Product(
-      Info.id,
-      Info.name,
-      Info.screen,
-      Info.backCamera,
-      Info.frontCamera,
-      Info.img,
-      Info.desc,
-      Info.type
-    );
-  }
+  // Hỏi người dùng xác nhận trước khi sửa
+  Swal.fire({
+    title: 'Xác nhận',
+    text: 'Bạn có chắc chắn muốn sửa sản phẩm?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Đồng ý',
+    cancelButtonText: 'Hủy',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Nếu người dùng đồng ý, thực hiện sửa sản phẩm
+      let Info = getInfo();
+      if (Info) {
+        var product = new Product(
+          Info.id,
+          Info.name,
+          Info.price,
+          Info.screen,
+          Info.backCamera,
+          Info.frontCamera,
+          Info.img,
+          Info.desc,
+          Info.type
+        );
+      }
 
-  let promise = api.editProduct(id, product);
-  promise
-    .then(function () {
-      getListProduct();
-      NotiAlert('success', 'ThanhCong', 1000);
-      $a('#iconClose').click();
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+      let promise = api.editProduct(id, product);
+      promise
+        .then(function () {
+          getListProduct();
+          NotiAlert('success', 'Sửa thành công', 1000);
+          $a('#iconClose').click();
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+  });
 }
-
-document.addEventListener('click', function (event) {
-  let isDeleteButton = event.target.classList.contains('delete-button');
-  let isEditButton = event.target.classList.contains('edit-button');
-  const productId = event.target.getAttribute('keyProduct');
-  if (isDeleteButton) {
-    deleteProduct(productId);
-  } else if (isEditButton) {
-    editProduct(productId);
-  }
-});
 
 // $a('.edit-button').addEventListener('click', () => {
 //   $a('#myModal').style.display = 'block';
@@ -302,3 +328,26 @@ function resetForm() {
 //   );
 //   await addProduct(Product);
 // };
+
+$a('#listAcount').addEventListener('click', (e) => {
+  const id = e.target.id;
+  const idPerson = e.target.getAttribute('idPerson');
+  switch (id) {
+    case 'editBtn':
+      editPerson(idPerson);
+      break;
+    case 'deleteBtn':
+      deletePerson(idPerson);
+      break;
+  }
+});
+document.addEventListener('click', function (event) {
+  let isDeleteButton = event.target.classList.contains('delete-button');
+  let isEditButton = event.target.classList.contains('edit-button');
+  const productId = event.target.getAttribute('keyProduct');
+  if (isDeleteButton) {
+    deleteProduct(productId);
+  } else if (isEditButton) {
+    editProduct(productId);
+  }
+});
