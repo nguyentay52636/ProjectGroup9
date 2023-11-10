@@ -97,7 +97,7 @@ function getInfo() {
 }
 const getInfoProduct = () => {
   let Info = getInfo();
-  let Product = new product(
+  let product = new Product(
     '',
     Info.name,
     Info.price,
@@ -108,7 +108,7 @@ const getInfoProduct = () => {
     Info.desc,
     Info.type
   );
-  addProduct(Product);
+  addProduct(product);
 };
 async function addProduct(data) {
   try {
@@ -123,11 +123,11 @@ async function addProduct(data) {
 }
 $a('#btnAdd').addEventListener('click', getInfoProduct);
 
-// function imgView() {
-//   let src = $a('#picture').value;
-//   $a('#picture-preview').src = src;
-// }
-// $a('#picture').oninput = imgView();
+function imgView() {
+  let src = $a('#picture').value;
+  $a('#picture-preview').src = src;
+}
+$a('#picture').oninput = imgView();
 
 async function deleteProduct(id) {
   const result = await Swal.fire({
@@ -180,12 +180,12 @@ function infoEdit(product) {
   document.getElementById('picture').value = product.img;
   document.getElementById('desc').value = product.desc;
   document.getElementById('type').value = product.type;
-  let buttonEdit = document.querySelector('#btnAdd');
-  buttonEdit.innerHTML = `<button style="backgroud-color:red"onclick="updateProduct(${product.id})"></button> <p>Update edit</p></button>`;
+  let buttonEdit = document.querySelector('#btnEdit');
+  buttonEdit.innerHTML = `<button onclick="updateProduct(${product.id})">Update edit</button>`;
   $a('#myModal').style.display = 'block';
 }
 function editProduct(id) {
-  var promise = api.getInfoProduct(id);
+  let promise = api.getInfoProduct(id);
   promise
     .then(function (result) {
       infoEdit(result.data);
@@ -197,9 +197,38 @@ function editProduct(id) {
 $a('#iconClose').onclick = () => {
   resetForm();
 };
-$a('#myModal').onclick = () => {
-  resetForm();
-};
+// $a('#myModal').onclick = () => {
+//   resetForm();
+// };
+
+//update product
+function updateProduct(id) {
+  let Info = getInfo();
+  if (Info) {
+    var product = new Product(
+      Info.id,
+      Info.name,
+      Info.screen,
+      Info.backCamera,
+      Info.frontCamera,
+      Info.img,
+      Info.desc,
+      Info.type
+    );
+  }
+
+  let promise = api.editProduct(id, product);
+  promise
+    .then(function () {
+      getListProduct();
+      NotiAlert('success', 'ThanhCong', 1000);
+      $a('#iconClose').click();
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+
 document.addEventListener('click', function (event) {
   let isDeleteButton = event.target.classList.contains('delete-button');
   let isEditButton = event.target.classList.contains('edit-button');
@@ -234,6 +263,8 @@ function resetForm() {
   });
 }
 
+//Person
+
 //
 // const getInfo = () => {
 //   const getValueInput = $a('.form-group input');
@@ -242,7 +273,7 @@ function resetForm() {
 //   const Info = newInputProduct.map((input) => {
 //     return input.value;
 //   });
-//   var InfoValue = {
+//   const InfoValue = {
 //     name: Info[0],
 //     price: Info[1],
 //     screen: Info[2],

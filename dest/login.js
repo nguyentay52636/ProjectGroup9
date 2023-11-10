@@ -54,7 +54,7 @@ function infoLogin() {
             statusLogin: true,
           };
           localStorage.setItem('Login', JSON.stringify(status));
-          localStorage.setItem('loggedInUser', userName);
+          // localStorage.setItem('loggedInUser', userName);
           setTimeout(() => {
             window.location.href = '../index.html';
           }, 1000);

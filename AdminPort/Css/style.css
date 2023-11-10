@@ -16,18 +16,21 @@ body{height: 100vh;}
 	background: #006bcf;
 	height: 100vh;
 	position: fixed  ;
-}.main{width: 75%;float: left;height: 90vh; padding: 15px;}
+}.main{width: 75%;float: left;height: 90vh; padding:15px 0;}
 .logo{text-align: center;color: var(--white); margin-top: 50px; font-weight: 800;
 margin-bottom: 50px;}
-.nav{margin-left: 40px;}
+
 .nav li{list-style: none; padding: 16px 19px;}
-.nav li i{ margin-right: 10px;}
+.nav li i{ margin-right: 10px;
+  font-size: 24px;
+}
 .nav li a{color: var(--white); text-decoration: none; font-weight: 600;}
 .active{
 	background:var(--white);
 	border-radius: 27px;
 	position: relative;
 }
+
 .nav > .active::before, .nav > .active::after {
      content: "";
      position: absolute;
@@ -42,7 +45,7 @@ margin-bottom: 50px;}
     right: 0px;
     height: 80px;
     width: 62px;
-    border-bottom-right-radius: 80px;
+    border-bottom-right-radius: 100px;
     box-shadow: 0 40px 0 0 var(--white);
     transform: rotateZ(360deg);
 }
@@ -343,6 +346,8 @@ display :none;
 margin-bottom: 40px;
 text-align: center;
 font-weight: 700;
+position: relative;
+left: 50px;
 }
 .type {
 padding-left: 30px;
@@ -352,11 +357,11 @@ padding-left: 30px;
 }
 #btnAdd {
 border-radius: 30px; 
-padding: 10px 20px;
+padding: 15px 25px;
 display: flex;
 justify-content: flex-end;
 border: transparent;
-background-color: #0046fd;
+background-color: #006bcf;
 color:white;
 transition: box-shadow 0.3s;
 cursor: pointer;
@@ -376,7 +381,7 @@ background-color:#006bcf;
 font-size: 14px;
 font-weight: 600;
 cursor: pointer;
-margin:20px 10px ; 
+margin:0 20px ; 
 
 
 }
@@ -412,6 +417,7 @@ background:#006bcf;;
 color:white ; 
 }
 .btnCloseTab{
+
 display: inline-block;
 position: relative;
 left: 265px;
@@ -421,7 +427,6 @@ width: 30px;
 height: 30px;
 cursor: pointer;
 border-radius: 40%;
-background-color:white;
 outline: none;
 
 
@@ -430,8 +435,7 @@ outline: none;
 }
 .btnCloseTab i{
 font-size: 30px;
-color:black;
-}
+color:white;}
 #btnAdd p {
 font: 16px;
 line-height: 1.3;
@@ -462,4 +466,45 @@ padding-bottom: 25px;
   position: relative;
   bottom: -28px;
   left: 12px;
+}
+.content {
+  display: none;
+}
+.text__logo {
+  display: inline-block;
+}
+.nav{margin-left: 25px;}
+.content__acount {
+margin-left:23px;
+}
+#content__product {
+  margin-left :20px; 
+}
+#iconClose {
+position: relative;
+left:10px;
+top: -44px;
+color:white;
+background-color:rgba(255, 0, 0, 0.518);
+border-radius: 40px;
+padding:0 10px; 
+  }
+
+
+.content__acount #modalAdd{
+margin:15px 0 ; 
+}
+.fa-user-circle {
+  font-size: 24px;
+}
+#btnAddPerson {
+  padding:15px 24px ;
+border-radius: 20px;
+border: transparent;
+color:white;
+background-color:#006bcf;
+font-size: 14px;
+font-weight: 600;
+cursor: pointer;
+margin:0 20px ; 
 }
