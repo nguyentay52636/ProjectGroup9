@@ -33,7 +33,7 @@ function renderPerson(data) {
           <td>${email}</td>
            <td>Admin</td>
            <td>
-           <button onclick="editPerson(${id})" data-toggle="modal" data-target="#exampleModalCenter" style="border:none; background-color:transparent; padding-left:5px;" class="fa fa-pencil"></button> 
+           <button onclick="editPerson(${id})  style="border:none; background-color:transparent; padding-left:5px;" class="fa fa-pencil"></button> 
           <button onclick="deleteProduct(${id})" style="border:none ; background-color:transparent; padding-left:5px" class="fa-solid fa-trash">
           </button>
            
@@ -95,3 +95,42 @@ function NotiAlert(icon, title, timer) {
     timer: timer,
   });
 }
+// delete
+function deleteProduct(id) {
+  let promise = api.deletePerson(id);
+  promise
+    .then(function () {
+      getListPerson();
+      NotiAlert('error', 'Xoa thanh cong', 2000);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+// update
+// function updateProduct(id) {
+//   let Info = getInfo();
+//   if (Info) {
+//     var product = new Product(
+//       Info.id,
+//       Info.name,
+//       Info.screen,
+//       Info.backCamera,
+//       Info.frontCamera,
+//       Info.img,
+//       Info.desc,
+//       Info.type
+//     );
+//   }
+
+//   let promise = api.editProduct(id, product);
+//   promise
+//     .then(function () {
+//       getListProduct();
+//       NotiAlert('success', 'ThanhCong', 1000);
+//       $a('#iconClose').click();
+//     })
+//     .catch(function (error) {
+//       console.log(error);
+//     });
+// }
