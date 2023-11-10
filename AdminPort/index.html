@@ -14,6 +14,7 @@
   <body>
     <section>
       <div class="sidebar">
+  
         <h1 class="logo">
           <i class="fa fa-user-circle" aria-hidden="true"></i>
           <p class="text__logo">Product Management</p>
@@ -24,22 +25,23 @@
         </div>
         <ul class="nav">
           <li>
-            <a><i class="fa fa-windows"></i> Dashboard</a>
+            
+            <a href=".././index.html"><i class="fa fa-windows"></i><p class="text__logo"> Home pages</p></a>
           </li>
           <li class="active">
-            <a><i class="fa fa-shopping-bag"></i>Order</a>
+            <a><i class="fa fa-shopping-bag"></i><p class="text__logo">User</p></a>
+          </li>
+          <li class="innerUser">
+            <a><i class="fa fa-tag"></i><p class="text__logo">Order</p></a>
           </li>
           <li>
-            <a><i class="fa fa-tag"></i>User</a>
+            <a><i class="fa fa-pie-chart"></i><p class="text__logo">Statistic</p></a>
+          </li>
+          <li id="innerProduct">
+            <a ><i class="fa fa-cube"></i><p class="text__logo">Product</p></a>
           </li>
           <li>
-            <a><i class="fa fa-pie-chart"></i> Statistic</a>
-          </li>
-          <li>
-            <a id="innerProduct"><i class="fa fa-cube"></i>Product</a>
-          </li>
-          <li>
-            <a><i class="fa fa-database"></i> Stock</a>
+            <a><i class="fa fa-database"></i><p class="text__logo"> Stock</p></a>
           </li>
           
         </ul>
@@ -80,6 +82,7 @@
 
             <div class="clearfix"></div>
           </div>
+          
 
           <br /><br />
           <div class="content">
@@ -219,15 +222,15 @@
         
               <input id="searchProduct" class="form-control" type="text" placeholder="Input infomation Smart Phone"> 
             </div>
-            <div id="myModal" class="modal">
+            <div id="myModal" class="modal" >
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
                     <span class="modal-title" id="exampleModalLongTitle"
                       >Information product</span
                     >
-                    <button type="button" class="close" onclick="closeModal()">
-                      <span id="iconClose">&times;</span>
+                    <button id="iconClose" type="button" class="close" >
+                      <span >&times;</span>
                     </button>
                   </div>
 
@@ -329,9 +332,9 @@
                     <!-- Các phần còn lại trong modal body -->
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="btnAdd">
-                      Add
-                    </button>
+                  <div id="btnEdit"><button type="button" id="btnAdd">
+                    Add
+                  </button></div>
                   </div>
                 </div>
               </div>
@@ -352,22 +355,138 @@
     </div> -->
                   <th scope="col" width="30px">Price</th>
                   <th scope="col" width="60px">Screen</th>
-                  <th scope="col" width="70px">BackCamera</th>
-                  <th scope="col" width="80px">FrontCamera</th>
+                  <th scope="col" width="90px">BackCamera</th>
+                  <th scope="col" width="90px">FrontCamera</th>
                   <th scope="col" width="80px">Picture</th>
-                  <th scope="col" width="100px">Desc</th>
-                  <th scope="col">Type</th>
+                  <th scope="col" width="70px">Desc</th>
+                  <th scope="col" width="70px">Type</th>
                   <th scope="col" width="70px">Action</th>
                 </tr>
               </thead>
               <tbody class="DanhSachSanPham"></tbody>
             </table>
           </div>
+              <!-- ACount -->
+           <div class="content__acount">
+            <button id="modalAdd" onclick="openModalPerson()">
+              <p>Add person</p>
+            </button>
+            
+
+      <table >
+        <thead>
+          <tr class="headerTable">
+            <th scope="col" width="30px">ID</th>
+            <th scope="col" >User Name</th>
+            <th scope="col" >Password</th>
+            <th scope="col">Full name</th>
+            <th scope="col">Email</th>
+            <th scope="col" width="60px">Type acount</th>
+            <th scope="col" width="80px">Action</th>
+          </tr>
+        </thead>
+        <tbody id="listAcount">
+         
+        </tbody>
+      </table>
+    </div>
+
+    
         </div>
       </div>
+
     </section>
+    <!-- modalPerson -->
+      <div id="myModalPerson" class="modal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <span class="modal-title" id="exampleModalLongTitle"
+                      >Information person</span
+                    >
+                    <button id="iconClose" type="button" class="close" >
+                      <span>&times;</span>
+                    </button>
+                  </div>
+
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="namePerson"
+                        name="name"
+                        placeholder="User name"
+                      />
+                      <br />
+                      <span id="tb-namePerson"></span>
+                    </div>
+                  
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="fullnamePerson"
+                        name="screen"
+                        placeholder="Full name"
+                      />
+                      <br />
+                      <span id="tb-fullname"></span>
+                    </div>
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="emailPerson"
+                        name="email"
+                        placeholder="Email"
+                      />
+                      <br />
+                      <span id="tb-email"></span>
+                    </div>
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="passwordPerson"
+                        name="password"
+                        placeholder="Password"
+                      />
+                      <br />
+                      <span id="tb-password"></span>
+                    </div>
+                    
+                    
+                  
+                    <div class="form-group">
+                    
+                      <select class="form-control" name="typeacount" id="typePerson">
+                        <option value="">Type</option>
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                      </select>
+                      <br />
+                      <span id="tb-typeacount"></span>
+                    </div>
+                    <!-- Các phần còn lại trong modal body -->
+                  </div>
+                  <div class="modal-footer">
+                  <div id="btnEdit" >
+                    <button  type="button" id="btnAddPerson" >
+                    Add
+                  </button>
+                </div>
+                  
+                  </div>
+                </div>
+              </div>
+            </div>
     <br />
     <br />
+    <br>  
+    <br>
+    <br>
+   
     <script
     src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.0/axios.min.js"
     integrity="sha512-WrdC3CE9vf1nBf58JHepuWT4x24uTacky9fuzw2g/3L9JkihgwZ6Cfv+JGTtNyosOhEmttMtEZ6H3qJWfI7gIQ=="
@@ -405,35 +524,57 @@
         const content = $a('.content');
         content.style.display = 'none';
         $a('#content__product').style.display = 'block';
+        $a('.content__acount').style.display = 'none';
       };
 
       $a('.active').onclick = () => {
         const content = $a('.content');
         content.style.display = 'block';
         $a('#content__product').style.display = 'none';
+        $a('.content__acount').style.display = 'block';
+        $a('.content').style.display='none'
         //modal
       };
     </script>
     <script>
       function openModal() {
-        var modal = document.getElementById('myModal');
+        let modal = document.getElementById('myModal');
         modal.style.display = 'block';
-      }
-      function openModal() {
-        var modal = document.getElementById('myModal');
-        modal.style.display = 'block';
-
-        // Đăng ký sự kiện click bên ngoài modal
-        window.addEventListener('click', function (event) {
-          if (event.target == modal) {
-            modal.style.display = 'none';
-          }
-        });
-      }
-     
-      $a('.close').onclick = () => {
-        var modal = document.getElementById('myModal');
+        }
+        function openModalPerson(){
+          let modal = document.getElementById('myModalPerson');
+          modal.style.display = 'block';
+          window.addEventListener('click', function (event) {
+            if (event.target == modal) {
+              modal.style.display = 'none';
+            }
+          });
+        }
+      
+        function openModal() {
+          let modal = document.getElementById('myModal');
+          let modalPerson = $a('#myModalPerson');
+        
+          // Hiển thị cả hai modal
+          modal.style.display = 'block';
+          modalPerson.style.display = 'none';
+        
+          // Đăng ký sự kiện click bên ngoài modal
+          window.addEventListener('click', function (event) {
+            if (event.target == modal) {
+              // Ẩn cả hai modal nếu click bên ngoài
+              modal.style.display = 'none';
+              modalPerson.style.display = 'none';
+            }
+          });
+        }
+        
+   
+      $a('#iconClose').onclick = () => {
+        let modal = document.getElementById('myModal');
         modal.style.display = 'none';
+        let modalPerson =   $a('#myModalPerson');
+        modalPerson.style.display = 'none';
       };
       //tab
       $a('.btnCloseTab').addEventListener('click', () => {
@@ -445,7 +586,8 @@
           $a('.btnCloseTab .fa-angle-left').style.display = 'block';
           $a('.btnCloseTab .fa-chevron-right').style.display = 'none';
           $a('.btnCloseTab').style.left = '265px';
-          $a('.text__logo').style.display = 'block';
+          $a('content__acount').style.marginLeft = '23px';
+          
         } else {
           $a('#overLayout').style.width = '65px';
           $a('.sidebar').style.width = '65px';
@@ -453,6 +595,12 @@
           $a('.btnCloseTab .fa-chevron-right').style.display = 'block';
           $a('.btnCloseTab').style.left = '50px';
           $a('.text__logo').style.display = 'none';
+          const noneList = $a('.nav li a');
+      noneList.forEach((element) => {
+        element.style.display = 'none';
+        $a('ul .active').style.display='none';
+      });
+
           //$a('.main').left =
           /* const arrIcon = $a('.nav a i ');
           arrIcon.forEach((element) => {
@@ -460,8 +608,10 @@
           }); */
         }
       });
+      
     </script>
-   
+   <!-- <script type="module" src="./src/Services/renderListPerson.js"></script> -->
     <script type="module" src="./src/Services/main.js"></script>
   </body>
 </html>
+\

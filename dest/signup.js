@@ -69,12 +69,13 @@ function signUp() {
     url: 'https://650f9b0d54d18aabfe9a203b.mockapi.io/api/v1/users',
     method: 'POST',
     data: {
-      fullname: fullName,
       username: userName,
       password: passWord,
+      fullname: fullName,
       email: email,
     },
   });
+  localStorage.setItem('loggedInUser', fullName);
   promise.then((result) => {
     Swal.fire({
       position: 'center',
@@ -90,3 +91,13 @@ function signUp() {
   });
 }
 $a('.signUp__btn').addEventListener('click', signUp);
+
+// export function selectType() {
+//   let selectedValue = $a('#TypeSelect').value;
+//   if (selectedValue === 'admin') {
+//     renderPerson(persons, 'admin');
+//   } else if (selectedValue === 'user') {
+//     renderPerson(persons, 'user');
+//   }
+// }
+// $a('#TypeSelect').addEventListener('change', selectType);

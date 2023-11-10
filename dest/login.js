@@ -31,18 +31,27 @@
 // }
 const $a = document.querySelector.bind(document);
 // function checkEmpty() {}
+
 function infoLogin() {
   const userName = $a('#username').value;
   const passWord = $a('#password').value;
-  var user = localStorage.getItem(userName);
+
   let promise = axios({
     url: 'https://650f9b0d54d18aabfe9a203b.mockapi.io/api/v1/users',
     method: 'GET',
   });
+
   promise.then((data) => {
     for (let i = 0; i < data.data.length; i++) {
       if (userName === data.data[i].username) {
         if (passWord === data.data[i].password) {
+          // Lưu thông tin đăng nhập vào localStorage
+          let status = {
+            statusLogin: true,
+            userType: data.data[i].type,
+          };
+          localStorage.setItem('Login', JSON.stringify(status));
+
           Swal.fire({
             position: 'center',
             icon: 'success',
@@ -50,17 +59,25 @@ function infoLogin() {
             showConfirmButton: false,
             timer: 1000,
           });
-          let status = {
-            statusLogin: true,
-          };
-          localStorage.setItem('Login', JSON.stringify(status));
-          localStorage.setItem('loggedInUser', userName);
-          setTimeout(() => {
-            window.location.href = '../index.html';
-          }, 1000);
+
+          // Kiểm tra loại tài khoản và chuyển hướng
+          checkUserTypeAndRedirect(data.data[i].type);
         }
       }
     }
   });
 }
+
+function checkUserTypeAndRedirect(userType) {
+  if (userType === 'admin') {
+    // Chuyển hướng tới trang admin
+    window.location.href = '../AdminPort/index.html';
+  } else if (userType === 'user') {
+    // Chuyển hướng tới trang user
+    window.location.href = '../index.html';
+  } else {
+    console.log('User type not recognized or not logged in.');
+  }
+}
+
 $a('.btnLogin').addEventListener('click', infoLogin);
