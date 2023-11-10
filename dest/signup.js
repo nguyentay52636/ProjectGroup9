@@ -69,9 +69,9 @@ function signUp() {
     url: 'https://650f9b0d54d18aabfe9a203b.mockapi.io/api/v1/users',
     method: 'POST',
     data: {
-      fullname: fullName,
       username: userName,
       password: passWord,
+      fullname: fullName,
       email: email,
     },
   });
