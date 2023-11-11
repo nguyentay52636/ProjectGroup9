@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>Admin Dashboard</title>
+    <!-- font google -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap">
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link
       rel="stylesheet"
@@ -544,13 +546,13 @@
         function openModalPerson(){
           let modal = document.getElementById('myModalPerson');
           modal.style.display = 'block';
-          window.addEventListener('click', function (event) {
+        document.addEventListener('click', function (event) {
             if (event.target == modal) {
               modal.style.display = 'none';
             }
           });
         }
-      
+   
         function openModal() {
           let modal = document.getElementById('myModal');
           let modalPerson = $a('#myModalPerson');
@@ -559,8 +561,8 @@
           modal.style.display = 'block';
           modalPerson.style.display = 'none';
         
-          // Đăng ký sự kiện click bên ngoài modal
-          window.addEventListener('click', function (event) {
+          // Đăng ký sự kiện cick bên ngoài modal
+        document.addEventListener('click', function (event) {
             if (event.target == modal) {
               // Ẩn cả hai modal nếu click bên ngoài
               modal.style.display = 'none';
@@ -568,7 +570,9 @@
             }
           });
         }
-        
+    /*  document.addEventListener('click',()=> {
+        $a('#myModalPerson').style.display = 'none'
+      })*/
    
       $a('#iconClose').onclick = () => {
         let modal = document.getElementById('myModal');
@@ -599,15 +603,8 @@
       noneList.forEach((element) => {
         element.style.display = 'none';
         $a('ul .active').style.display='none';
-      });
-
-          //$a('.main').left =
-          /* const arrIcon = $a('.nav a i ');
-          arrIcon.forEach((element) => {
-            element.style.display = 'none';
-          }); */
-        }
-      });
+      });}});
+      
       
     </script>
    <!-- <script type="module" src="./src/Services/renderListPerson.js"></script> -->

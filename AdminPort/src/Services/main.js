@@ -131,8 +131,7 @@ function imgView() {
   let src = $a('#picture').value;
   $a('#picture-preview').src = src;
 }
-$a('#picture').oninput = imgView();
-
+$a('#picture').oninput = imgView;
 async function deleteProduct(id) {
   // Hỏi người dùng xác nhận trước khi xóa
   const result = await Swal.fire({
@@ -190,6 +189,7 @@ function infoEdit(product) {
   document.getElementById('picture').value = product.img;
   document.getElementById('desc').value = product.desc;
   document.getElementById('type').value = product.type;
+  imgView();
   let buttonEdit = document.querySelector('#btnEdit');
   console.log(buttonEdit);
   buttonEdit.innerHTML = `<button id="updateBtn" idProduct="${product.id}">Update edit</button>`;
@@ -201,9 +201,11 @@ $a('#myModal').addEventListener('click', (e) => {
     case 'updateBtn':
       const idProduct = e.target.getAttribute('idProduct');
       updateProduct(idProduct);
+      break;
     case 'updateBtnPerson':
       const idPerson = e.target.getAttribute('idPeson');
       updatePerson(idPerson);
+      break;
   }
 });
 function editProduct(id) {
@@ -266,11 +268,6 @@ function updateProduct(id) {
   });
 }
 
-// $a('.edit-button').addEventListener('click', () => {
-//   $a('#myModal').style.display = 'block';
-//   resetForm();
-// });
-
 function NotiAlert(icon, title, timer) {
   Swal.fire({
     position: 'center',
@@ -281,7 +278,7 @@ function NotiAlert(icon, title, timer) {
   });
 }
 
-function resetForm() {
+export function resetForm() {
   const arrInput = $all('.form-group input');
   const newArrInput = Array.from(arrInput);
   newArrInput.map((input) => {

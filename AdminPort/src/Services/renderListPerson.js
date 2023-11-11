@@ -1,5 +1,6 @@
 import callApiPerson from '../Controller/callApiPerson.js';
 import Person from '../models/person.js';
+import { resetForm } from './main.js';
 // import { selectType } from '../../../dest/signup.js';
 const $a = document.querySelector.bind(document);
 let api = new callApiPerson();
@@ -69,6 +70,7 @@ function addPerson(data) {
       getListPerson(valueInput);
       NotiAlert('success', 'Them thanh cong', 2000);
       $a('#myModalPerson').click();
+      resetForm();
     })
     .catch(function (error) {
       console.log(error);
@@ -77,7 +79,7 @@ function addPerson(data) {
 export function getInfoPerson() {
   let Info = getValueInput();
   let person = new Person(
-    '',
+    Info.id,
     Info.username,
     Info.fullname,
     Info.email,
@@ -118,7 +120,9 @@ export function infoEditPerson(person) {
   fields.forEach((field) => {
     $a(`#${field}Person`).value = person[field];
   });
+  console.log(person);
   let buttonEdit = $a('#btnEdit');
+  console.log(buttonEdit);
   buttonEdit.innerHTML = `<button id="updateBtnPerson" idPerson="${person.id}">Update edit</button>`;
   $a('#myModalPerson').style.display = 'block';
 }
@@ -159,13 +163,14 @@ export function updatePerson(id) {
     if (result.isConfirmed) {
       // Nếu người dùng đồng ý, thực hiện sửa người dùng
       let Info = getValueInput();
+      console.log(Info);
       if (Info) {
         var person = new Person(
           Info.id,
           Info.username,
-          Info.password,
           Info.fullname,
           Info.email,
+          Info.password,
           Info.type
         );
       }
