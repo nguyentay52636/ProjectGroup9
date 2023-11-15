@@ -1,5 +1,6 @@
 import callApiPerson from '../Controller/callApiPerson.js';
 import Person from '../models/person.js';
+import { resetForm } from './main.js';
 // import { selectType } from '../../../dest/signup.js';
 const $a = document.querySelector.bind(document);
 let api = new callApiPerson();
@@ -18,30 +19,36 @@ const getListPerson = () => {
     });
 };
 getListPerson();
-
+export const searchPerson = () => {
+  const searchPerson = $a('#searchPerson').value.toLowerCase();
+  const filterPerson = persons.filter(function (person) {
+    return person.fullname.toLowerCase().includes(searchPerson);
+  });
+  renderPerson(filterPerson);
+};
 function renderPerson(data) {
   let tablePerson = $a('#listAcount');
   let content = data.reduce((prev, account) => {
-    const { id, username, password, fullname, email, type } = account;
-    return (
-      prev +
-      `<tr>
-          <td>${id}</td>
-          <td>${username}</td>
-          <td>${password}</td>
-          <td>${fullname}</td>
-          <td>${email}</td>
-           <td>${type}</td>
-           <td>
-           <button id="editBtn" idPerson="${id}"  style="border:none; background-color:transparent; padding-left:5px; font-size:22px;" class="fa fa-pencil"></button> 
-          <button id="deleteBtn" idPerson="${id}" style="border:none ; background-color:transparent; padding-left:5px font-size:22px;" class="fa-solid fa-trash">
-          </button>
-           
-           </td>
-        </tr>`
-    );
+    return prev + innerPerson(account);
   }, '');
   tablePerson.innerHTML = content;
+}
+function innerPerson(account) {
+  const { id, username, password, fullname, email, type } = account;
+  return `<tr>
+  <td>${id}</td>
+  <td>${username}</td>
+  <td>${password}</td>
+  <td>${fullname}</td>
+  <td>${email}</td>
+   <td>${type}</td>
+   <td>
+   <button id="editBtn" idPerson="${id}"  style="border:none; background-color:transparent; padding-left:5px; font-size:22px;" class="fa fa-pencil"></button> 
+  <button id="deleteBtn" idPerson="${id}" style="border:none ; background-color:transparent; padding-left:5px font-size:22px;" class="fa-solid fa-trash">
+  </button>
+   
+   </td>
+</tr>`;
 }
 function getValueInput() {
   const userName = $a('#namePerson').value;
@@ -64,11 +71,12 @@ function addPerson(data) {
   let promise = api.addPerson(data);
 
   promise
-    .then(function (data) {
+    .then(function () {
       let valueInput = getValueInput();
       getListPerson(valueInput);
       NotiAlert('success', 'Them thanh cong', 2000);
       $a('#myModalPerson').click();
+      resetForm();
     })
     .catch(function (error) {
       console.log(error);
@@ -77,7 +85,7 @@ function addPerson(data) {
 export function getInfoPerson() {
   let Info = getValueInput();
   let person = new Person(
-    '',
+    Info.id,
     Info.username,
     Info.fullname,
     Info.email,
@@ -114,12 +122,21 @@ export function deletePerson(id) {
 
 // Edit person
 export function infoEditPerson(person) {
-  const fields = ['name', 'password', 'fullname', 'email', 'type'];
-  fields.forEach((field) => {
-    $a(`#${field}Person`).value = person[field];
-  });
-  let buttonEdit = $a('#btnEdit');
-  buttonEdit.innerHTML = `<button id="updateBtnPerson" idPerson="${person.id}">Update edit</button>`;
+  // const fields = ['name', 'password', 'fullname', 'email', 'type'];
+
+  // fields.forEach((field) => {
+  //   console.log(field);
+  //   $a(`#${field}Person`).value = person[field];
+  // });
+  $a('#namePerson').value = person.username;
+  $a('#passwordPerson').value = person.password;
+  $a('#fullnamePerson').value = person.fullname;
+  $a('#emailPerson').value = person.email;
+  $a('#typePerson').value = person.type;
+
+  let buttonEdit = $a('#btnEditPerson');
+  // console.log(buttonEdit);
+  buttonEdit.innerHTML = `<button id="updateBtnPerson"  idPerson="${person.id}">Update edit</button>`;
   $a('#myModalPerson').style.display = 'block';
 }
 
@@ -163,9 +180,9 @@ export function updatePerson(id) {
         var person = new Person(
           Info.id,
           Info.username,
-          Info.password,
           Info.fullname,
           Info.email,
+          Info.password,
           Info.type
         );
       }

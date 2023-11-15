@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>Admin Dashboard</title>
+    <!-- font google -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap">
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link
       rel="stylesheet"
@@ -71,7 +73,7 @@
               <div class="profile-div">
                 <p><i class="fa fa-user"></i> Profile</p>
                 <p><i class="fa fa-cog"></i> Settings</p>
-                <p><i class="fa fa-power-off"></i> Log Out</p>
+                <p><i class="fa fa-power-off " id="BtnLogout"></i> Log Out</p>
               </div>
 
               <div class="notification-div">
@@ -209,6 +211,7 @@
                 </tr>
               </tbody>
             </table>
+           
           </div>
           <!-- table Product  -->
           <div id="content__product">
@@ -217,8 +220,6 @@
             </button>
             <div class="search__product">
               <p>Search product:</p>
-              <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
-              
         
               <input id="searchProduct" class="form-control" type="text" placeholder="Input infomation Smart Phone"> 
             </div>
@@ -229,7 +230,7 @@
                     <span class="modal-title" id="exampleModalLongTitle"
                       >Information product</span
                     >
-                    <button id="iconClose" type="button" class="close" >
+                    <button id="iconClose" type="button" class="close" onclick="closeBtn()">
                       <span >&times;</span>
                     </button>
                   </div>
@@ -304,6 +305,7 @@
                         id="picture-preview"
                         src=""
                         alt=""
+                        type="file"
                       />
                       <br />
                       <span id="tb-picture"></span>
@@ -365,9 +367,20 @@
               </thead>
               <tbody class="DanhSachSanPham"></tbody>
             </table>
+            <div class="pagination-container">
+              <button id="prevPage">Trang Trước</button>
+              <span id="currentPage">Trang 1</span>
+              <button id="nextPage">Trang Sau</button>
+            </div>
+            
           </div>
               <!-- ACount -->
            <div class="content__acount">
+            <div class="search__person">
+              <p>Search person :</p>
+              <br>
+              <input id="searchPerson" class="form-control" type="text" placeholder="Input infomation Smart Phone"> 
+            </div>
             <button id="modalAdd" onclick="openModalPerson()">
               <p>Add person</p>
             </button>
@@ -376,12 +389,12 @@
       <table >
         <thead>
           <tr class="headerTable">
-            <th scope="col" width="30px">ID</th>
-            <th scope="col" >User Name</th>
-            <th scope="col" >Password</th>
-            <th scope="col">Full name</th>
-            <th scope="col">Email</th>
-            <th scope="col" width="60px">Type acount</th>
+            <th scope="col" width="15px">ID</th>
+            <th scope="col" width="100px" >User Name</th>
+            <th scope="col" width="80px" >Password</th>
+            <th scope="col" width="150px">Full name</th>
+            <th scope="col" width="170px">Email</th>
+            <th scope="col" width="35px">Type acount</th>
             <th scope="col" width="80px">Action</th>
           </tr>
         </thead>
@@ -389,6 +402,12 @@
          
         </tbody>
       </table>
+      <div class="pagination-container">
+        <button id="prevPage">Trang Trước</button>
+        <span id="currentPage">Trang 1</span>
+        <button id="nextPage">Trang Sau</button>
+      </div>
+      
     </div>
 
     
@@ -404,10 +423,11 @@
                     <span class="modal-title" id="exampleModalLongTitle"
                       >Information person</span
                     >
-                    <button id="iconClose" type="button" class="close" >
+                    <button id="iconClose" type="button" class="close" onclick="closeBtn()">
                       <span>&times;</span>
                     </button>
                   </div>
+                  
 
                   <div class="modal-body">
                     <div class="form-group">
@@ -461,7 +481,7 @@
                     <div class="form-group">
                     
                       <select class="form-control" name="typeacount" id="typePerson">
-                        <option value="">Type</option>
+
                         <option value="user">User</option>
                         <option value="admin">Admin</option>
                       </select>
@@ -471,7 +491,7 @@
                     <!-- Các phần còn lại trong modal body -->
                   </div>
                   <div class="modal-footer">
-                  <div id="btnEdit" >
+                  <div id="btnEditPerson" >
                     <button  type="button" id="btnAddPerson" >
                     Add
                   </button>
@@ -537,20 +557,27 @@
       };
     </script>
     <script>
-      function openModal() {
-        let modal = document.getElementById('myModal');
-        modal.style.display = 'block';
-        }
+    function closeBtn(){
+      const ModaProduct =$a('#myModal')  ;
+      const ModalPerson =   $a('#myModalPerson') ; 
+ if(modalPerson) {
+  ModalPerson.style.display = "none";
+ } else if(ModaProduct) {
+  ModaProduct.style.display = "none";
+ }
+ }
+
+      
         function openModalPerson(){
           let modal = document.getElementById('myModalPerson');
           modal.style.display = 'block';
-          window.addEventListener('click', function (event) {
+        document.addEventListener('click', function (event) {
             if (event.target == modal) {
               modal.style.display = 'none';
             }
           });
         }
-      
+   
         function openModal() {
           let modal = document.getElementById('myModal');
           let modalPerson = $a('#myModalPerson');
@@ -559,8 +586,8 @@
           modal.style.display = 'block';
           modalPerson.style.display = 'none';
         
-          // Đăng ký sự kiện click bên ngoài modal
-          window.addEventListener('click', function (event) {
+          // Đăng ký sự kiện cick bên ngoài modal
+        document.addEventListener('click', function (event) {
             if (event.target == modal) {
               // Ẩn cả hai modal nếu click bên ngoài
               modal.style.display = 'none';
@@ -568,14 +595,16 @@
             }
           });
         }
-        
+    /*  document.addEventListener('click',()=> {
+        $a('#myModalPerson').style.display = 'none'
+      })*/
    
-      $a('#iconClose').onclick = () => {
+      /*a('#iconClose').onclick = () => {
         let modal = document.getElementById('myModal');
         modal.style.display = 'none';
         let modalPerson =   $a('#myModalPerson');
         modalPerson.style.display = 'none';
-      };
+      };*/
       //tab
       $a('.btnCloseTab').addEventListener('click', () => {
         if ($a('.sidebar').style.width === '65px') {
@@ -587,6 +616,9 @@
           $a('.btnCloseTab .fa-chevron-right').style.display = 'none';
           $a('.btnCloseTab').style.left = '265px';
           $a('content__acount').style.marginLeft = '23px';
+          $a('.nav').style.marginLeft = '14px' ;
+          $a('.nav li a .text__logo').style.display = 'none';
+         $a('.main').style.marginLeft = '150px';
           
         } else {
           $a('#overLayout').style.width = '65px';
@@ -595,23 +627,19 @@
           $a('.btnCloseTab .fa-chevron-right').style.display = 'block';
           $a('.btnCloseTab').style.left = '50px';
           $a('.text__logo').style.display = 'none';
-          const noneList = $a('.nav li a');
-      noneList.forEach((element) => {
-        element.style.display = 'none';
-        $a('ul .active').style.display='none';
-      });
+          $a('.nav .active').style.display='none';
+          $a('.main').style.marginLeft = '150px';
 
-          //$a('.main').left =
-          /* const arrIcon = $a('.nav a i ');
-          arrIcon.forEach((element) => {
-            element.style.display = 'none';
-          }); */
-        }
-      });
+   }});
+    
       
+      $a('#BtnLogout').addEventListener('click',()=> {
+       setTimeout(()=> {
+        window.location.href ='../index.html'
+       },200)
+      })
     </script>
    <!-- <script type="module" src="./src/Services/renderListPerson.js"></script> -->
     <script type="module" src="./src/Services/main.js"></script>
   </body>
-</html>
-\
+</html> 

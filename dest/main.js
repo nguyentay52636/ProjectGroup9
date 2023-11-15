@@ -665,6 +665,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (result.isConfirmed) {
         // Xóa thông tin đăng nhập khỏi localStorage
         localStorage.removeItem('loggedInUser');
+        window.location.href = './login.html';
 
         // Ẩn phần tử headerAdminOut và hiển thị phần tử mặc định
         headerAdminOut.style.display = 'none';

@@ -70,9 +70,9 @@ function signUp() {
     method: 'POST',
     data: {
       username: userName,
-      password: passWord,
       fullname: fullName,
       email: email,
+      password: passWord,
     },
   });
   localStorage.setItem('loggedInUser', fullName);
