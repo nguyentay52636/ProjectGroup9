@@ -51,7 +51,7 @@ function infoLogin() {
             userType: data.data[i].type,
           };
           localStorage.setItem('Login', JSON.stringify(status));
-
+          localStorage.setItem('loggedInUser', userName);
           Swal.fire({
             position: 'center',
             icon: 'success',

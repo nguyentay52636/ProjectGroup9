@@ -6,21 +6,52 @@ import {
   editPerson,
   updatePerson,
 } from './renderListPerson.js';
-const $a = document.querySelector.bind(document);
-const $all = document.querySelectorAll.bind(document);
+import { searchPerson } from './renderListPerson.js';
+
 let api = new CallApi();
 let products = [];
-const getListProduct = () => {
-  let prosime = api.fectchData();
-  prosime
-    .then(function (result) {
-      products = result.data;
-      renderProduct(products);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+
+const numberItems = 13;
+const currentPage = 1;
+//phan trang
+const renderCurrentPage = (pageNumber) => {
+  try {
+    const tableBody = $a('#DanhSachSanPham');
+    const startIndex = (pageNumber - 1) * numberItems;
+    const endIndex = startIndex + numberItems;
+    const currentItems = products.slice(startIndex, endIndex);
+    renderProduct(currentItems);
+    $a('#currentPage').textContent = `Trang ${pageNumber}`;
+  } catch (error) {
+    console.error('Error in renderCurrentPage:', error);
+  }
 };
+
+$a('#prevPage').addEventListener('click', () => {
+  if (currentPage > 1) {
+    currentPage--;
+    renderCurrentPage(currentPage);
+  }
+});
+
+$a('#nextPage').addEventListener('click', () => {
+  const totalPages = Math.ceil(products.length / numberItems);
+  if (currentPage < totalPages) {
+    currentPage++;
+    renderCurrentPage(currentPage);
+  }
+});
+
+const getListProduct = async () => {
+  try {
+    const result = await api.fectchData();
+    products = result.data;
+    renderCurrentPage(currentPage);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 getListProduct();
 
 function SearchProduct() {
@@ -34,7 +65,7 @@ function SearchProduct() {
     );
   });
 
-  renderProduct(filteredProducts);
+  renderCurrentPage(currentPage);
 }
 $a('#searchProduct').addEventListener('input', SearchProduct);
 $a('#btnAddPerson').addEventListener('click', getInfoPerson);
@@ -69,7 +100,7 @@ function renderProduct(data) {
      <td>${type}</td>
      <td> 
        
-     <button keyProduct="${id}" class="edit-button fa fa-pencil" style="border:none; background-color:transparent; padding-left:5px; font-size:22px; cursor: pointer;"></button>
+     <button  keyProduct="${id}" class="edit-button fa fa-pencil" style="border:none; background-color:transparent; padding-left:5px; font-size:22px; cursor: pointer;"></button>
 <button keyProduct="${id}" class="delete-button fa-solid fa-trash" style="border:none; background-color:transparent; padding-left:5px; font-size:22px; cursor: pointer;"></button>
 
    </td>
@@ -79,14 +110,14 @@ function renderProduct(data) {
 }
 
 function getInfo() {
-  const name = document.getElementById('name').value;
-  const price = document.getElementById('price').value;
-  const screen = document.getElementById('screen').value;
-  const backCamera = document.getElementById('backcamera').value;
-  const frontCamera = document.getElementById('frontcamera').value;
-  const img = document.getElementById('picture').value;
-  const desc = document.getElementById('desc').value;
-  const type = document.getElementById('type').value;
+  const name = $a('#name').value;
+  const price = $a('#price').value;
+  const screen = $a('#screen').value;
+  const backCamera = $a('#backcamera').value;
+  const frontCamera = $a('#frontcamera').value;
+  const img = $a('#picture').value;
+  const desc = $a('#desc').value;
+  const type = $a('#type').value;
   const InfoValue = {
     name: name,
     price: price,
@@ -102,7 +133,7 @@ function getInfo() {
 const getInfoProduct = () => {
   let Info = getInfo();
   let product = new Product(
-    '',
+    Info.id,
     Info.name,
     Info.price,
     Info.screen,
@@ -191,23 +222,10 @@ function infoEdit(product) {
   document.getElementById('type').value = product.type;
   imgView();
   let buttonEdit = document.querySelector('#btnEdit');
-  console.log(buttonEdit);
+  // console.log(buttonEdit);
   buttonEdit.innerHTML = `<button id="updateBtn" idProduct="${product.id}">Update edit</button>`;
   $a('#myModal').style.display = 'block';
 }
-$a('#myModal').addEventListener('click', (e) => {
-  const id = e.target.id;
-  switch (id) {
-    case 'updateBtn':
-      const idProduct = e.target.getAttribute('idProduct');
-      updateProduct(idProduct);
-      break;
-    case 'updateBtnPerson':
-      const idPerson = e.target.getAttribute('idPeson');
-      updatePerson(idPerson);
-      break;
-  }
-});
 function editProduct(id) {
   let promise = api.getInfoProduct(id);
   promise
@@ -218,6 +236,7 @@ function editProduct(id) {
       console.log(error);
     });
 }
+
 $a('#iconClose').onclick = () => {
   resetForm();
 };
@@ -287,7 +306,19 @@ export function resetForm() {
 }
 
 //Person
-
+$a('#myModal').addEventListener('click', (e) => {
+  const id = e.target.id;
+  switch (id) {
+    case 'updateBtn':
+      const idProduct = e.target.getAttribute('idProduct');
+      updateProduct(idProduct);
+      break;
+    case 'updateBtnPerson':
+      const idPerson = e.target.getAttribute('idPeson');
+      updatePerson(idPerson);
+      break;
+  }
+});
 //
 // const getInfo = () => {
 //   const getValueInput = $a('.form-group input');
@@ -348,3 +379,17 @@ document.addEventListener('click', function (event) {
     editProduct(productId);
   }
 });
+$a('#searchPerson').addEventListener('input', searchPerson);
+
+//add image
+function previewImage(input) {
+  var file = input.files[0];
+  if (file) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      document.getElementById('picture-preview').src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+    //    onchange="previewImage(this)"
+  }
+}

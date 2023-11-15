@@ -34,6 +34,31 @@
 
     <style>
       /* CSS Loading Here */
+      body {
+        font-family: Arial, sans-serif;
+      }
+  
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        background-color:transparent;
+      }
+  
+      th, td {
+        border: 2px solid black;
+        padding: 8px;
+        text-align: left;
+      }
+  
+      th {
+        background-color: #f2f2f2;
+      }
+  
+      tr:hover {
+        background-color: #f5f5f5;
+      }
+ 
       .loading {
         width: 100vw;
         height: 100vh;
@@ -198,31 +223,31 @@
             <p class="title">CHECKOUT</p>
             <div class="form">
               <div class="group">
-                <label for="">Full Name</label>
-                <input type="text" name="" id="" />
+                <label for="" >Full Name</label>
+                <input type="text" name="" id="fullname" />
               </div>
               <div class="group">
                 <label for="">Phone Number</label>
-                <input type="text" name="" id="" />
+                <input type="text" name="" id="phonenumber" />
               </div>
               <div class="group">
                 <label for="">Address</label>
-                <input type="text" name="" id="" />
+                <input type="text" name="" id="address" />
               </div>
               <div class="group">
                 <label for="">Country</label>
-                <select name="" id="">
-                  <option value="">Viet Nam</option>
-                  <option value="">America</option>
-                  <option value="">China</option>
+                <select name="" id="selectCountry">
+                  <option value="vietnam">Viet Nam</option>
+                  <option value="america">America</option>
+                  <option value="china">China</option>
                 </select>
               </div>
               <div class="group">
                 <label for="">City</label>
-                <select name="" id="">
-                  <option value="">TP. HCM</option>
-                  <option value="">LA</option>
-                  <option value="">Bac Kinh</option>
+                <select name="" id="selectCity">
+                  <option value="thphcm">TP. HCM</option>
+                  <option value="la">LA</option>
+                  <option value="backinh">Bac Kinh</option>
                 </select>
               </div>
               <div class="return">
@@ -239,10 +264,27 @@
             </div>
           </div>
         </div>
+<!-- table product  -->
+<br>
+<br>
+<div class="table__product">
+  <table>
+    <thead>
+<tr>
+  <td>Product</td>
+  <td>Price</td>
+  <td>Time order</td>
+  <td>Status</td>
+</tr>
+    </thead>
+    <tbody id="renderOrder">  </tbody>
+  </table>
+</div>
       </section>
     </main>
 
     <!-- Javascipt -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script src="dest/jsmain.min.js"></script>
     <script src="dest/checkout.js"></script>
