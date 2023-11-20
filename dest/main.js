@@ -1,4 +1,5 @@
 // Schero
+// console.log(123);
 let handlehero = () => {
   let slider = document.querySelector('.schero__list');
   if (slider) {

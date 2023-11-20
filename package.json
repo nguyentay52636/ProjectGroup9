@@ -20,6 +20,7 @@
     "load-grunt-tasks": "^5.1.0"
   },
   "dependencies": {
+    "@cloudinary/url-gen": "^1.13.0",
     "json-server": "^0.17.4"
   }
 }

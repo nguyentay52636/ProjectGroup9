@@ -172,13 +172,12 @@ document.addEventListener('DOMContentLoaded', function () {
       alert('Bạn phải đăng nhập trước khi thanh toán');
       window.location.href = '/login.html';
     } else {
-      successfulPayment();
+      getDataProduct();
 
       // Không cần chuyển trang ở đây để giữ người dùng ở trang hiện tại
     }
   });
 });
-function handleRenderInfo() {}
 
 function successfulPayment() {
   Swal.fire({
@@ -188,36 +187,68 @@ function successfulPayment() {
   });
 }
 
-/*<div class="list">
-              <div class="item">
-                <img src="img/scproducts-img-1.jpg" alt="" />
-                <div class="info">
-                  <div class="name">Product 1</div>
-                  <div class="price">$22</div>
-                </div>
-                <p class="quangtity">1</p>
-                <p class="returnPrice">$50</p>
-                <div class="btnDelete">Xoa</div>
-              </div>
-            </div>*/
+const getFormattedDate = () => {
+  const currentDate = new Date();
+  const day = currentDate.getDate();
+  const month = currentDate.getMonth() + 1;
+  const year = currentDate.getFullYear();
+  const hours = currentDate.getHours();
+  const minutes = currentDate.getMinutes();
+  const seconds = currentDate.getSeconds();
+
+  const formattedDate = `${year}-${month < 10 ? '0' + month : month}-${
+    day < 10 ? '0' + day : day
+  } ${hours < 10 ? '0' + hours : hours}:${
+    minutes < 10 ? '0' + minutes : minutes
+  }:${seconds < 10 ? '0' + seconds : seconds}`;
+
+  return formattedDate;
+};
+
 const $a = document.querySelector.bind(document);
 const getDataProduct = () => {
+  const btnSubmit = $a('.btnCheckout');
+  btnSubmit.disabled = true;
+
   const fullName = $a('#fullname').value;
   const phoneNumber = $a('#phonenumber').value;
   const address = $a('#address').value;
   const selectedType = $a('#selectCountry').value;
   const selectedCity = $a('#selectCity').value;
+  const getDate = getFormattedDate();
+
+  const status = 0;
+  const listProduct = Array.from(
+    JSON.parse(document.cookie.replace('listCart=', ''))
+  ).filter((itemCart) => itemCart);
+
   let dataCheckOut = {
     fullname: fullName,
     phonenumber: phoneNumber,
     address: address,
     country: selectedType,
     city: selectedCity,
+    products: listProduct,
+    date: getDate,
+    status: status,
   };
+
+  console.log(dataCheckOut);
+
   let promise = axios({
     url: 'https://650f9b0d54d18aabfe9a203b.mockapi.io/api/v1/OderProduct',
     method: 'POST',
     data: dataCheckOut,
   });
-  promise.then((data) => {});
+
+  promise
+    .then((data) => {
+      successfulPayment();
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+    .finally(() => {
+      btnSubmit.disabled = false;
+    });
 };

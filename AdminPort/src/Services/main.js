@@ -7,19 +7,21 @@ import {
   updatePerson,
 } from './renderListPerson.js';
 import { searchPerson } from './renderListPerson.js';
-
+const $a = document.querySelector.bind(document);
+const $all = document.querySelectorAll.bind(document);
 let api = new CallApi();
 let products = [];
 
-const numberItems = 13;
-const currentPage = 1;
+let numberItems = 13;
+let currentPage = 1;
 //phan trang
-const renderCurrentPage = (pageNumber) => {
+const renderCurrentPage = (products, pageNumber) => {
   try {
     const tableBody = $a('#DanhSachSanPham');
     const startIndex = (pageNumber - 1) * numberItems;
     const endIndex = startIndex + numberItems;
     const currentItems = products.slice(startIndex, endIndex);
+    console.log(currentItems);
     renderProduct(currentItems);
     $a('#currentPage').textContent = `Trang ${pageNumber}`;
   } catch (error) {
@@ -30,15 +32,16 @@ const renderCurrentPage = (pageNumber) => {
 $a('#prevPage').addEventListener('click', () => {
   if (currentPage > 1) {
     currentPage--;
-    renderCurrentPage(currentPage);
+    renderCurrentPage(products, currentPage);
   }
 });
 
 $a('#nextPage').addEventListener('click', () => {
   const totalPages = Math.ceil(products.length / numberItems);
   if (currentPage < totalPages) {
+    console.log();
     currentPage++;
-    renderCurrentPage(currentPage);
+    renderCurrentPage(products, currentPage);
   }
 });
 
@@ -46,7 +49,7 @@ const getListProduct = async () => {
   try {
     const result = await api.fectchData();
     products = result.data;
-    renderCurrentPage(currentPage);
+    renderCurrentPage(products, currentPage);
   } catch (error) {
     console.log(error);
   }
@@ -65,7 +68,7 @@ function SearchProduct() {
     );
   });
 
-  renderCurrentPage(currentPage);
+  renderCurrentPage(filteredProducts, currentPage);
 }
 $a('#searchProduct').addEventListener('input', SearchProduct);
 $a('#btnAddPerson').addEventListener('click', getInfoPerson);
