@@ -42,7 +42,7 @@ const innerOrder = (order) => {
   <td>${country}</td>
    <td>${city}</td>
    <td>${
-     status == 0 ? 'Đợi xử lí' : status == 1 ? 'Đã xử lí' : 'Da huy don'
+     status == 0 ? 'Đợi xử lí' : status == 1 ? 'Đã xử lí' : 'Đã huỷ đơn'
    }</td>
    <td id="btnContact">
   <button id="deleteOrder" idOrder="${id}" class="fa-solid fa-trash"></button>
@@ -78,6 +78,18 @@ const getListOrder = async () => {
 };
 getListOrder();
 
+//search order
+const searchOrder = () => {
+  const inputOrder = $a('#searchOrder').value;
+  const fiflterOrder = orders.filter((order) => {
+    return (
+      order.fullname.toLowerCase().includes(inputOrder.toLowerCase()) ||
+      order.phonenumber.toString().includes(inputOrder)
+    );
+    handleRenderOrder(fiflterOrder);
+  });
+};
+$a('#searchOrder').addEventListener('input', searchOrder);
 // const deleteOrder = async (id) => {
 async function deleteOrder(id) {
   const result = await Swal.fire({
@@ -187,11 +199,11 @@ const getInfoOrder = (data) => {
   $a('#NotiStatus').innerHTML = `<select name="" idOrder="${
     data.id
   }" id="selectStatus">
-    <option value="0">Doi xu li</option>
+    <option value="0">Đợi xử lí</option>
     <option value="1" 
       ${data.status == 1 ? 'selected' : ''}
     >Đã xử lí </option>
-    <option value="2" ${data.status == 2 ? 'selected' : ''}>Da huy don</option>
+    <option value="2" ${data.status == 2 ? 'selected' : ''}>Đã huỷ đơn</option>
 </select>`;
 };
 const checkOrder = async (id) => {

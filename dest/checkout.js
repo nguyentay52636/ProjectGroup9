@@ -221,7 +221,7 @@ const getDataProduct = () => {
   const listProduct = Array.from(
     JSON.parse(document.cookie.replace('listCart=', ''))
   ).filter((itemCart) => itemCart);
-
+console.log(listProduct);
   let dataCheckOut = {
     fullname: fullName,
     phonenumber: phoneNumber,

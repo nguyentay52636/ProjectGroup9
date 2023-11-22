@@ -1,12 +1,14 @@
 import callApiPerson from '../Controller/callApiPerson.js';
+import { checkEmail, checkEmpty, checkNumber } from '../Error/validation.js';
 import Person from '../models/person.js';
 import { resetForm } from './main.js';
+// import { checkEmail, checkNumber, checkEmpty } from '../Error/validation.js';
 // import { selectType } from '../../../dest/signup.js';
 const $a = document.querySelector.bind(document);
 let api = new callApiPerson();
 // let person = new Person();
 let persons = [];
-
+let isValid = [];
 const getListPerson = () => {
   let promise = api.fectchData();
   promise
@@ -56,6 +58,15 @@ function getValueInput() {
   const fullName = $a('#fullnamePerson').value;
   const Email = $a('#emailPerson').value;
   const typePerson = $a('#typePerson').value;
+  isValid = [
+    checkEmpty(userName, 'Vui lòng không để  trống!', '#tb-namePerson'),
+    checkEmpty(passWord, 'Vui lòng không để  trống!', '#tb-password'),
+    checkNumber(passWord, 'Vui lòng nhập giá là số', '#tb-password'),
+    checkEmpty(fullName, 'Vui lòng không để  trống!', '#fullnamePerson'),
+    checkEmpty(Email, 'Vui lòng không để  trống!', '#emailPerson'),
+    checkEmail(Email, 'Email không đúng định dạng ', '#emailPerson'),
+    checkEmpty(typePerson, 'Vui lòng không để  trống!', '#tb-typeacount'),
+  ];
   let InfoValue = {
     username: userName,
     fullname: fullName,
@@ -84,15 +95,23 @@ function addPerson(data) {
 }
 export function getInfoPerson() {
   let Info = getValueInput();
-  let person = new Person(
-    Info.id,
-    Info.username,
-    Info.fullname,
-    Info.email,
-    Info.password,
-    Info.type
-  );
-  addPerson(person);
+  if (Info === null) {
+    return null;
+  }
+  const status = isValid.filter((status) => {
+    return status === false;
+  });
+  if (status) {
+    let person = new Person(
+      Info.id,
+      Info.username,
+      Info.fullname,
+      Info.email,
+      Info.password,
+      Info.type
+    );
+    addPerson(person);
+  }
 }
 
 // delete

@@ -31,10 +31,9 @@ function openModalPerson() {
 function openModal() {
   let modal = document.getElementById('myModal');
   let modalPerson = $a('#myModalPerson');
-
   // Hiển thị cả hai modal
   modal.style.display = 'block';
-  modalPerson.style.display = 'none';
+  // modalPerson.style.display = 'none';
 
   // Đăng ký sự kiện cick bên ngoài modal
   document.addEventListener('click', function (event) {
@@ -44,6 +43,17 @@ function openModal() {
       modalPerson.style.display = 'none';
     }
   });
+}
+
+function closeBtn() {
+  const ModaProduct = $a('#myModal');
+  const ModalPerson = $a('#myModalPerson');
+
+  if (ModalPerson) {
+    ModalPerson.style.display = 'none';
+  } else if (ModaProduct) {
+    ModaProduct.style.display = 'none';
+  }
 }
 
 $a('.btnCloseTab').addEventListener('click', () => {
@@ -78,16 +88,6 @@ $a('.btnCloseTab').addEventListener('click', () => {
     $a('.main').style.margin = '60px';
   }
 });
-function closeBtn() {
-  const ModaProduct = $a('#myModal');
-  const ModalPerson = $a('#myModalPerson');
-
-  if (ModalPerson) {
-    ModalPerson.style.display = 'none';
-  } else if (ModaProduct) {
-    ModaProduct.style.display = 'none';
-  }
-}
 
 // $a('.sidebar').addEventListener('click', (event) => {
 //   const { target } = event;

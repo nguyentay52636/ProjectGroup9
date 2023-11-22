@@ -7,11 +7,13 @@ import {
   updatePerson,
 } from './renderListPerson.js';
 import { searchPerson } from './renderListPerson.js';
+import { checkEmpty, checkNumber } from '../Error/validation.js';
+import order from '../models/order.js';
 const $a = document.querySelector.bind(document);
 const $all = document.querySelectorAll.bind(document);
 let api = new CallApi();
 let products = [];
-
+let isValid = [];
 let numberItems = 13;
 let currentPage = 1;
 //phan trang
@@ -121,6 +123,26 @@ function getInfo() {
   const img = $a('#picture').value;
   const desc = $a('#desc').value;
   const type = $a('#type').value;
+  isValid = [
+    checkEmpty(name, 'Vui lòng nhập tên sản phẩm', '#tbName'),
+    checkEmpty(price, 'Vui lòng nhập giá sản phẩm', '#tbPrice'),
+    checkNumber(price, 'Vui lòng nhập giá là số', '#tbPrice'),
+    checkEmpty(screen, 'Vui lòng nhập thông số màn hình', '#tbScreen'),
+    checkEmpty(
+      backCamera,
+      'Vui lòng nhập thông số camera sau',
+      '#tbBackCamera'
+    ),
+    checkEmpty(
+      frontCamera,
+      'Vui lòng nhập thông số camera trước',
+      '#tbFrontCamera'
+    ),
+    checkEmpty(img, 'Vui lòng nhập đường dẫn ảnh sản phẩm', '#tbPicture'),
+    checkEmpty(desc, 'Vui lòng nhập mô tả sản phẩm', '#tbDesc'),
+    checkEmpty(type, 'Vui lòng chọn loại sản phẩm', '#tbType'),
+  ];
+
   const InfoValue = {
     name: name,
     price: price,
@@ -133,25 +155,36 @@ function getInfo() {
   };
   return InfoValue;
 }
+//them thi lay gia tri o input => tao doi tuong = >
 const getInfoProduct = () => {
   let Info = getInfo();
-  let product = new Product(
-    Info.id,
-    Info.name,
-    Info.price,
-    Info.screen,
-    Info.backCamera,
-    Info.frontCamera,
-    Info.img,
-    Info.desc,
-    Info.type
-  );
-  addProduct(product);
+  if (Info === null) {
+    return null;
+  }
+  const status = isValid.filter((status) => {
+    return status === false;
+  });
+  if (!status) {
+    let product = new Product(
+      Info.id,
+      Info.name,
+      Info.price,
+      Info.screen,
+      Info.backCamera,
+      Info.frontCamera,
+      Info.img,
+      Info.desc,
+      Info.type
+    );
+    addProduct(product);
+  }
 };
+
 async function addProduct(data) {
   try {
     const result = await api.addProduct(data);
-    getListProduct();
+    products = result.data;
+    getListProduct(products);
     NotiAlert('success', 'Them thanh cong', 2000);
     $a('#iconClose').click();
     resetForm();
