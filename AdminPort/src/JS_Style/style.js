@@ -1,14 +1,13 @@
 const $a = document.querySelector.bind(document);
 
-// $a('#innerProduct').onclick = (event) => {
-//   // console.log(123);
-//   // const content = $a('.content');
-//   // content.style.display = 'none';
-//   // $a('#content__product').style.display = 'block';
-//   // $a('.content__acount').style.display = 'none';
-//   // $a('#content__order').style.display = 'none';
-
-// };
+$a('#innerProduct').onclick = (event) => {
+  console.log(123);
+  const content = $a('.content');
+  content.style.display = 'none';
+  $a('#content__product').style.display = 'block';
+  $a('.content__acount').style.display = 'none';
+  $a('#content__order').style.display = 'none';
+};
 
 $a('.active').onclick = () => {
   const content = $a('.content');

@@ -8,7 +8,6 @@ import {
 } from './renderListPerson.js';
 import { searchPerson } from './renderListPerson.js';
 import { checkEmpty, checkNumber } from '../Error/validation.js';
-import order from '../models/order.js';
 const $a = document.querySelector.bind(document);
 const $all = document.querySelectorAll.bind(document);
 let api = new CallApi();
