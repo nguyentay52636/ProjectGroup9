@@ -8,6 +8,7 @@ import {
 } from './renderListPerson.js';
 import { searchPerson } from './renderListPerson.js';
 import { checkEmpty, checkNumber } from '../Error/validation.js';
+
 const $a = document.querySelector.bind(document);
 const $all = document.querySelectorAll.bind(document);
 let api = new CallApi();
@@ -18,7 +19,6 @@ let currentPage = 1;
 //phan trang
 const renderCurrentPage = (products, pageNumber) => {
   try {
-    const tableBody = $a('#DanhSachSanPham');
     const startIndex = (pageNumber - 1) * numberItems;
     const endIndex = startIndex + numberItems;
     const currentItems = products.slice(startIndex, endIndex);
@@ -163,7 +163,7 @@ const getInfoProduct = () => {
   const status = isValid.filter((status) => {
     return status === false;
   });
-  if (!status) {
+  if (status.length === 0) {
     let product = new Product(
       Info.id,
       Info.name,
@@ -272,13 +272,6 @@ function editProduct(id) {
     });
 }
 
-$a('#iconClose').onclick = () => {
-  resetForm();
-};
-// $a('#myModal').onclick = () => {
-//   resetForm();
-// };
-//update product
 function updateProduct(id) {
   // Hỏi người dùng xác nhận trước khi sửa
   Swal.fire({
@@ -343,14 +336,24 @@ export function resetForm() {
 //Person
 $a('#myModal').addEventListener('click', (e) => {
   const id = e.target.id;
+  console.log(123);
   switch (id) {
     case 'updateBtn':
       const idProduct = e.target.getAttribute('idProduct');
       updateProduct(idProduct);
       break;
+  }
+});
+$a('#myModalPerson').addEventListener('click', (e) => {
+  const id = e.target.id;
+  switch (id) {
     case 'updateBtnPerson':
-      const idPerson = e.target.getAttribute('idPeson');
+      console.log(123);
+      const idPerson = e.target.getAttribute('idperson');
       updatePerson(idPerson);
+      $a('#iconClose').click();
+      resetForm();
+
       break;
   }
 });

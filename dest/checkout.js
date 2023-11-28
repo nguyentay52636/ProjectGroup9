@@ -1,4 +1,6 @@
 let listCart = [];
+
+let idUserLogged = localStorage.getItem('loggedIDUser');
 // get data cart form cookie
 
 function checkCart() {
@@ -189,45 +191,71 @@ function successfulPayment() {
 
 const getFormattedDate = () => {
   const currentDate = new Date();
-  const day = currentDate.getDate();
-  const month = currentDate.getMonth() + 1;
   const year = currentDate.getFullYear();
+  const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+  const day = currentDate.getDate().toString().padStart(2, '0');
   const hours = currentDate.getHours();
-  const minutes = currentDate.getMinutes();
-  const seconds = currentDate.getSeconds();
-
-  const formattedDate = `${year}-${month < 10 ? '0' + month : month}-${
-    day < 10 ? '0' + day : day
-  } ${hours < 10 ? '0' + hours : hours}:${
-    minutes < 10 ? '0' + minutes : minutes
-  }:${seconds < 10 ? '0' + seconds : seconds}`;
-
+  const minutes = currentDate.getMinutes().toString().padStart(2, '0');
+  const seconds = currentDate.getSeconds().toString().padStart(2, '0');
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds} ${ampm}`;
   return formattedDate;
 };
+let $a = document.querySelector.bind(document);
+const getValueInput = () => {
+  let fullName = $a('#fullname').value;
+  let phoneNumber = $a('#phonenumber').value;
+  let address = $a('#address').value;
+  let email = $a('#email').value;
+  return {
+    fullName: fullName,
+    phoneNumber: phoneNumber,
+    address: address,
+    email: email,
+  };
+};
 
-const $a = document.querySelector.bind(document);
+const fullNameInput = $a('#fullname');
+const phoneNumberInput = $a('#phonenumber');
+const addressInput = $a('#address');
+const emailInput = $a('#email');
+
+const getDataInfo = (id) => {
+  let promise = axios({
+    url: 'https://650f9b0d54d18aabfe9a203b.mockapi.io/api/v1/users/' + id,
+    method: 'GET',
+  });
+  promise
+    .then((result) => {
+      fullNameInput.value = result.data.fullname;
+      phoneNumberInput.value = result.data.phonenumber;
+      //addressInput.value = result.data.address;
+      emailInput.value = result.data.email;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+document.addEventListener('DOMContentLoaded', () => {
+  getDataInfo(idUserLogged);
+});
+
 const getDataProduct = () => {
   const btnSubmit = $a('.btnCheckout');
   btnSubmit.disabled = true;
 
-  const fullName = $a('#fullname').value;
-  const phoneNumber = $a('#phonenumber').value;
-  const address = $a('#address').value;
-  const selectedType = $a('#selectCountry').value;
-  const selectedCity = $a('#selectCity').value;
   const getDate = getFormattedDate();
-
   const status = 0;
   const listProduct = Array.from(
     JSON.parse(document.cookie.replace('listCart=', ''))
   ).filter((itemCart) => itemCart);
-console.log(listProduct);
+  console.log(listProduct);
+  let getData = getValueInput();
   let dataCheckOut = {
-    fullname: fullName,
-    phonenumber: phoneNumber,
-    address: address,
-    country: selectedType,
-    city: selectedCity,
+    fullname: getData.fullName,
+    phonenumber: getData.phoneNumber,
+    address: getData.address,
+    email: getData.email,
     products: listProduct,
     date: getDate,
     status: status,

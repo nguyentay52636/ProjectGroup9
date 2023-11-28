@@ -2,13 +2,10 @@ import callApiPerson from '../Controller/callApiPerson.js';
 import { checkEmail, checkEmpty, checkNumber } from '../Error/validation.js';
 import Person from '../models/person.js';
 import { resetForm } from './main.js';
-// import { checkEmail, checkNumber, checkEmpty } from '../Error/validation.js';
-// import { selectType } from '../../../dest/signup.js';
 const $a = document.querySelector.bind(document);
 let api = new callApiPerson();
-// let person = new Person();
 let persons = [];
-let isValid = [];
+let isValidPerson = [];
 const getListPerson = () => {
   let promise = api.fectchData();
   promise
@@ -36,13 +33,15 @@ function renderPerson(data) {
   tablePerson.innerHTML = content;
 }
 function innerPerson(account) {
-  const { id, username, password, fullname, email, type } = account;
+  const { id, username, password, fullname, email, type, phonenumber } =
+    account;
   return `<tr>
   <td>${id}</td>
   <td>${username}</td>
   <td>${password}</td>
   <td>${fullname}</td>
   <td>${email}</td>
+  <td>${phonenumber}</td>
    <td>${type}</td>
    <td>
    <button id="editBtn" idPerson="${id}"  style="border:none; background-color:transparent; padding-left:5px; font-size:22px;" class="fa fa-pencil"></button> 
@@ -56,27 +55,38 @@ function getValueInput() {
   const userName = $a('#namePerson').value;
   const passWord = $a('#passwordPerson').value;
   const fullName = $a('#fullnamePerson').value;
+  const phoneNumber = $a('#phoneNumberPerson').value;
   const Email = $a('#emailPerson').value;
   const typePerson = $a('#typePerson').value;
-  isValid = [
+
+  isValidPerson = [
     checkEmpty(userName, 'Vui lòng không để  trống!', '#tb-namePerson'),
-    checkEmpty(passWord, 'Vui lòng không để  trống!', '#tb-password'),
-    checkNumber(passWord, 'Vui lòng nhập giá là số', '#tb-password'),
-    checkEmpty(fullName, 'Vui lòng không để  trống!', '#fullnamePerson'),
-    checkEmpty(Email, 'Vui lòng không để  trống!', '#emailPerson'),
-    checkEmail(Email, 'Email không đúng định dạng ', '#emailPerson'),
+    checkEmpty(passWord, 'Vui lòng không để  trống!', '#tb-passwordPerson'),
+    checkNumber(passWord, 'Vui lòng nhập giá là số', '#tb-passwordPerson'),
+    checkEmpty(fullName, 'Vui lòng không để  trống!', '#tb-fullnamePerson'),
+    checkEmpty(Email, 'Vui lòng không để  trống!', '#tb-emailPerson'),
+    checkEmail(Email, 'Email không đúng định dạng ', '#tb-emailPerson'),
     checkEmpty(typePerson, 'Vui lòng không để  trống!', '#tb-typeacount'),
+    checkEmpty(
+      phoneNumber,
+      'Vui lòng không để  trống!',
+      '#tb-phonenumberPerson'
+    ),
   ];
   let InfoValue = {
     username: userName,
-    fullname: fullName,
-    email: Email,
     password: passWord,
+    fullname: fullName,
+    phonenumber: phoneNumber,
+    email: Email,
     type: typePerson,
   };
   return InfoValue;
 }
-
+function validateAndBlur() {
+  validateInput(this);
+  this.blur();
+}
 //addperson
 function addPerson(data) {
   let promise = api.addPerson(data);
@@ -96,18 +106,19 @@ function addPerson(data) {
 export function getInfoPerson() {
   let Info = getValueInput();
   if (Info === null) {
-    return null;
+    return;
   }
-  const status = isValid.filter((status) => {
+  const status = isValidPerson.filter((status) => {
     return status === false;
   });
-  if (status) {
+  if (status.length === 0) {
     let person = new Person(
       Info.id,
       Info.username,
-      Info.fullname,
-      Info.email,
       Info.password,
+      Info.fullname,
+      Info.phonenumber,
+      Info.email,
       Info.type
     );
     addPerson(person);
@@ -151,6 +162,7 @@ export function infoEditPerson(person) {
   $a('#passwordPerson').value = person.password;
   $a('#fullnamePerson').value = person.fullname;
   $a('#emailPerson').value = person.email;
+  $a('#phoneNumberPerson').value = person.phonenumber;
   $a('#typePerson').value = person.type;
 
   let buttonEdit = $a('#btnEditPerson');
@@ -199,9 +211,10 @@ export function updatePerson(id) {
         var person = new Person(
           Info.id,
           Info.username,
-          Info.fullname,
-          Info.email,
           Info.password,
+          Info.fullname,
+          Info.phonenumber,
+          Info.email,
           Info.type
         );
       }

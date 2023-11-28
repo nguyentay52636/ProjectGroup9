@@ -1,5 +1,4 @@
 import callApiOrder from '../Controller/callApiOrder.js';
-import order from '../models/order.js';
 const $a = document.querySelector.bind(document);
 const $all = document.querySelectorAll.bind(document);
 
@@ -14,19 +13,7 @@ const handleRenderOrder = (data) => {
   tableOrder.innerHTML = contentOrder;
 };
 const innerOrder = (order) => {
-  const {
-    id,
-    fullname,
-    products,
-    phonenumber,
-    address,
-    country,
-    city,
-    date,
-    status,
-  } = order;
-  // const btnAction = getActionButton(id, status);
-
+  const { id, fullname, phonenumber, products, address, date,email, status } = order;
   return `<tr>
   <td>${id}</td>
   <td>${fullname}</td>
@@ -39,8 +26,7 @@ const innerOrder = (order) => {
   <td>${date}</td>
   <td>${phonenumber}</td>
   <td>${address}</td>
-  <td>${country}</td>
-   <td>${city}</td>
+  <td>${email}</td>
    <td>${
      status == 0 ? 'Đợi xử lí' : status == 1 ? 'Đã xử lí' : 'Đã huỷ đơn'
    }</td>

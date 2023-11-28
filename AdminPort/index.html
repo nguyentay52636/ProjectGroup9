@@ -3,10 +3,10 @@
   <head>
     <title>Admin Dashboard</title>
     <!-- font google -->
-    <link
+    <!-- <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap"
-    />
+    /> -->
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link
       rel="stylesheet"
@@ -381,14 +381,14 @@
         <option value="Giam">sắp xếp giảm</option>
       </select>
     </div> -->
-                  <th scope="col" width="30px">Price</th>
+                  <th scope="col" width="40px">Price</th>
                   <th scope="col" width="60px">Screen</th>
                   <th scope="col" width="90px">BackCamera</th>
-                  <th scope="col" width="90px">FrontCamera</th>
+                  <th scope="col" width="50px">FrontCamera</th>
                   <th scope="col" width="80px">Picture</th>
                   <th scope="col" width="70px">Desc</th>
                   <th scope="col" width="70px">Type</th>
-                  <th scope="col" width="70px">Action</th>
+                  <th scope="col" width="60px">Action</th>
                 </tr>
               </thead>
               <tbody class="DanhSachSanPham"></tbody>
@@ -418,13 +418,14 @@
             <table>
               <thead>
                 <tr class="headerTable">
-                  <th scope="col" width="15px">ID</th>
+                  <th scope="col" width="25px">ID</th>
                   <th scope="col" width="100px">User Name</th>
                   <th scope="col" width="80px">Password</th>
                   <th scope="col" width="150px">Full name</th>
                   <th scope="col" width="170px">Email</th>
-                  <th scope="col" width="35px">Type acount</th>
-                  <th scope="col" width="80px">Action</th>
+                  <th scope="col" width="100px">Phone number</th>
+                  <th scope="col" width="45px">Type acount</th>
+                  <th scope="col" width="60px">Action</th>
                 </tr>
               </thead>
               <tbody id="listAcount"></tbody>
@@ -460,17 +461,16 @@
           <table>
             <thead>
               <tr class="headerTable">
-                <th scope="col" width="15px">ID</th>
+                <th scope="col" width="25px">ID</th>
                 <th scope="col" width="110px">Full name</th>
                 <th scope="col" width="100px">Product</th>
-                <th scope="col" width="80px">Total price</th>
-                <th scope="col" width="100px">Date order</th>
+                <th scope="col" width="60px">Total price</th>
+                <th scope="col" width="90px">Date order</th>
                 <th scope="col" width="100px">Phone number</th>
                 <th scope="col" width="70px">Address</th>
-                <th scope="col" width="50px">Country</th>
-                <th scope="col" width="50px">City</th>
+                <th scope="col" width="160px">Email</th>
                 <th scope="col" width="50px">Status</th>
-                <th id="THaction" scope="col" width="90px">Action</th>
+                <th id="THaction" scope="col" width="80x">Action</th>
               </tr>
             </thead>
             <tbody id="listOrder">
@@ -595,7 +595,7 @@
                 placeholder="Full name"
               />
               <br />
-              <span id="tb-fullname"></span>
+              <span id="tb-fullnamePerson"></span>
             </div>
             <div class="form-group">
               <input
@@ -606,8 +606,20 @@
                 placeholder="Email"
               />
               <br />
-              <span id="tb-email"></span>
+              <span id="tb-emailPerson"></span>
             </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="phoneNumberPerson"
+                name="phonenumber"
+                placeholder="Phone number"
+              />
+              <br />
+              <span id="tb-phonenumberPerson"></span>
+            </div>
+
             <div class="form-group">
               <input
                 type="text"
@@ -617,7 +629,7 @@
                 placeholder="Password"
               />
               <br />
-              <span id="tb-password"></span>
+              <span id="tb-passwordPerson"></span>
             </div>
 
             <div class="form-group">

@@ -1,12 +1,11 @@
 export default class order {
-  constructor(id, fullname, phonenumber, address, country, city, time, status) {
+  constructor(id, fullname, phonenumber, address, email, time, status) {
     //
     this.id = id;
     this.fullname = fullname;
     this.phonenumber = phonenumber;
     this.address = address;
-    this.country = country;
-    this.city = city;
+    this.email = email;
     this.time = time;
     this.status = status;
   }

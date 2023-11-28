@@ -1,0 +1,29 @@
+export function addEventListeners() {
+  const inputFields = [
+    'namePerson',
+    'passwordPerson',
+    'fullnamePerson',
+    'phoneNumberPerson',
+    'emailPerson',
+    'typePerson',
+  ];
+
+  inputFields.forEach((field) => {
+    const inputElement = $a(`#${field}`);
+    inputElement.addEventListener('focus', onFocus);
+    inputElement.addEventListener('blur', onBlur);
+  });
+}
+// namedFunctions.js
+export function onFocus() {
+  // Thực hiện logic khi trường nhập liệu được focus
+  console.log('Input focused');
+  this.style.backgroundColor = '#e6f7ff'; // Đổi màu nền khi focus
+}
+
+export function onBlur() {
+  // Thực hiện logic khi trường nhập liệu bị blur
+  console.log('Input blurred');
+  validateInput(this);
+  this.style.backgroundColor = ''; // Đặt lại màu nền khi blur
+}
