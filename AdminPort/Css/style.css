@@ -9,7 +9,7 @@
 *{margin: 0px;  padding: 0px; font-family: 'Montserrat', sans-serif;
 }
 body{height: 100vh;
-font-weight: 600;
+
 }
 .sidebar{
 
@@ -35,10 +35,11 @@ margin-bottom: 50px;}
 	position: relative;
 }
 
-.nav > .active::before, .nav > .active::after {
+/* .nav > .active::before, .nav > .active::after {
      content: "";
      position: absolute;
-}
+     display: n;
+} */
 .nav > li{
     border-radius: 60px 0 0 60px;
         width: 92%;
@@ -190,22 +191,25 @@ table {
   width: 100%;
   table-layout: fixed;
   border-spacing: 0 15px;
-  border: 1px solid black;
+  border: 0.5px solid beige
 
 }
 
 table tr {
 
-  border: 1px solid #ddd!important;
+  border: 0.5px solid black;
   padding: .35em;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 table th,
 table td {
-  padding: 1.5em;
-  text-align: left;
+  padding: 1.1em;
+  text-align: center;
   border:  0.5px solid #000;
+  word-wrap: break-word;
+  overflow: hidden;
 
 }
 
@@ -275,6 +279,7 @@ table th {
 		box-shadow: 0 0 0 0 rgba(82, 255, 82, 0);
 	}
 }
+
 .active-tr{
 	background: #006bcf;
 	color: var(--white);
@@ -305,18 +310,17 @@ display :none;
 #content__product {
   display:none ;
 }
-/*modal*/
+
 .modal {
   display: none;
-  position: fixed;
+  position: fixed; 
   z-index: 1;
-  padding-top: 100px;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
+  overflow: auto; /* Thêm overflow để có thể cuộn nếu modal dài hơn trang */
 }
 
 .modal-dialog {
@@ -325,12 +329,22 @@ display :none;
 }
 
 .modal-content {
+  width: 450px;
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 60%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
+
+#Layout__Noti {
+  width: 100%;
+  margin:10px auto ; 
+}
+
+
+
+
 
 .close {
   color: #aaa;
@@ -351,7 +365,7 @@ margin-bottom: 40px;
 text-align: center;
 font-weight: 700;
 position: relative;
-left: 50px;
+
 }
 .type {
 padding-left: 30px;
@@ -390,7 +404,7 @@ margin:0 20px ;
 
 }
 #btnAdd:hover {
-  box-shadow: 5px 5px 10px #888888;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; 
 }
 #type {
   width: 86.5%;
@@ -477,7 +491,15 @@ padding-bottom: 25px;
 .text__logo {
   display: inline-block;
 }
+.text__logo1 {
+    display: inline-block;
+}
+
 .nav{margin-left: 25px;}
+
+.sidebar.smallMenu .nav li a p{
+  display: none;
+} 
 .content__acount {
 margin-left:23px;
 }
@@ -487,11 +509,11 @@ margin-left:23px;
 #iconClose {
 position: relative;
 left:10px;
-top: -44px;
+top: -120px;
 color:white;
 background-color:rgba(255, 0, 0, 0.518);
 border-radius: 40px;
-padding:0 10px; 
+padding:0 12px; 
   }
 
 
@@ -641,4 +663,198 @@ color:white;
 #nextPage {
   color:white;
   background-color: #006bcf;
+}
+/* #content__order {
+  display: none;
+
+} */
+.logo i {
+  font-size: 40px;
+}
+#content__order {
+  display: none;
+}
+#btnContact {
+display: inline-flex;
+border: none;
+}
+/* #btnContact button {
+margin:0 8px;
+padding: 0 8px
+} */
+#confirmOrder {
+ 
+  padding: 0 10px ;
+  cursor: pointer;
+  background-color: transparent;
+  font-weight: 800;
+  border: none;
+  font-size: 30px;
+}
+#btnContact  {
+  text-align: center;
+}
+#deleteOrder i {
+  font-size: 18px;
+}
+#deleteOrder {
+  padding: 10px 8px;
+  cursor: pointer;
+  background-color: transparent;
+  font-weight: 800;
+border: none;
+font-size: 20px;
+}
+.headerTable th {
+text-align: center;
+
+}
+/* form Orer  */
+ .form-group span {
+  padding:0 10px;
+}
+
+.headerModal h2{
+  text-align: center;
+  font-weight: 700;
+  font-size: 24px;
+border: 1px solid black;
+  } 
+.input-group h3 {
+  font-weight: 800;
+}
+#form-groupBtn {
+text-align: right;
+padding: 18px 14px ; 
+border: 1px 0 1px 0 solid black;
+}
+#form-groupBtn button {
+  font-size: 18px;
+  margin : 0 6px;
+  border-radius: 5px;
+  border: transparent;
+  padding: auto;
+  padding: 14px 12px ;
+  cursor: pointer;
+
+}
+#form-groupBtn button:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)
+}
+
+
+.headerModal {
+padding: 10px 0 ;
+}
+.input-group {
+  padding: 0 10px;
+} 
+#btnSplit{
+   background-color: red;
+  }
+#btnConfirm {
+  background-color: green;
+}
+#ModalNotify {
+  
+display: none; 
+z-index: 2;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+}
+/* modal inner  */
+#Layout__Noti {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  display: block;
+}
+.modal-contentNoti{
+  margin-top: 50px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.headerModal {
+  text-align: center;
+}
+
+.modal-body {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.input-group {
+  margin-bottom: 10px;
+}
+
+h3 {
+  margin: 0;
+}
+
+span {
+  display: block;
+  margin-top: 5px;
+}  
+
+thead tr td {
+text-align: center;
+}
+tr:hover {
+background-color:#CDD6E0;
+}
+.headerTable:hover {
+  background-color:#006bcf
+}
+#myModal {
+height: 100%;
+}
+#myModalPerson {
+  height: 100%;
+}
+.modal-dialogProduct {
+margin :35px 300px ;
+}
+#searchPerson {
+  width: 97%;
+}
+#searchOrder {
+  width: 110%;
+  margin-bottom: 25px;
+}
+#selectStatus {
+  width: 40%;
+  font-size: 16px;
+
+}
+.input-group h3 {
+  font-size: 24px;
+
+}
+.form-group1 span {
+  color:red;
+  font-size: 12px;
+  margin-left:10px;
+}
+.form-group1 { 
+  margin :15px ;
+}
+.modal-body .form-group span {
+  color :red; 
+  font-size: 12px;
 }

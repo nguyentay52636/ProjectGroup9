@@ -1,4 +1,6 @@
 let listCart = [];
+
+let idUserLogged = localStorage.getItem('loggedIDUser');
 // get data cart form cookie
 
 function checkCart() {
@@ -172,13 +174,12 @@ document.addEventListener('DOMContentLoaded', function () {
       alert('Bạn phải đăng nhập trước khi thanh toán');
       window.location.href = '/login.html';
     } else {
-      successfulPayment();
+      getDataProduct();
 
       // Không cần chuyển trang ở đây để giữ người dùng ở trang hiện tại
     }
   });
 });
-function handleRenderInfo() {}
 
 function successfulPayment() {
   Swal.fire({
@@ -188,36 +189,94 @@ function successfulPayment() {
   });
 }
 
-/*<div class="list">
-              <div class="item">
-                <img src="img/scproducts-img-1.jpg" alt="" />
-                <div class="info">
-                  <div class="name">Product 1</div>
-                  <div class="price">$22</div>
-                </div>
-                <p class="quangtity">1</p>
-                <p class="returnPrice">$50</p>
-                <div class="btnDelete">Xoa</div>
-              </div>
-            </div>*/
-const $a = document.querySelector.bind(document);
-const getDataProduct = () => {
-  const fullName = $a('#fullname').value;
-  const phoneNumber = $a('#phonenumber').value;
-  const address = $a('#address').value;
-  const selectedType = $a('#selectCountry').value;
-  const selectedCity = $a('#selectCity').value;
-  let dataCheckOut = {
-    fullname: fullName,
-    phonenumber: phoneNumber,
+const getFormattedDate = () => {
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+  const day = currentDate.getDate().toString().padStart(2, '0');
+  const hours = currentDate.getHours();
+  const minutes = currentDate.getMinutes().toString().padStart(2, '0');
+  const seconds = currentDate.getSeconds().toString().padStart(2, '0');
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds} ${ampm}`;
+  return formattedDate;
+};
+let $a = document.querySelector.bind(document);
+const getValueInput = () => {
+  let fullName = $a('#fullname').value;
+  let phoneNumber = $a('#phonenumber').value;
+  let address = $a('#address').value;
+  let email = $a('#email').value;
+  return {
+    fullName: fullName,
+    phoneNumber: phoneNumber,
     address: address,
-    country: selectedType,
-    city: selectedCity,
+    email: email,
   };
+};
+
+const fullNameInput = $a('#fullname');
+const phoneNumberInput = $a('#phonenumber');
+const addressInput = $a('#address');
+const emailInput = $a('#email');
+
+const getDataInfo = (id) => {
+  let promise = axios({
+    url: 'https://650f9b0d54d18aabfe9a203b.mockapi.io/api/v1/users/' + id,
+    method: 'GET',
+  });
+  promise
+    .then((result) => {
+      fullNameInput.value = result.data.fullname;
+      phoneNumberInput.value = result.data.phonenumber;
+      //addressInput.value = result.data.address;
+      emailInput.value = result.data.email;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+document.addEventListener('DOMContentLoaded', () => {
+  getDataInfo(idUserLogged);
+});
+
+const getDataProduct = () => {
+  const btnSubmit = $a('.btnCheckout');
+  btnSubmit.disabled = true;
+
+  const getDate = getFormattedDate();
+  const status = 0;
+  const listProduct = Array.from(
+    JSON.parse(document.cookie.replace('listCart=', ''))
+  ).filter((itemCart) => itemCart);
+  console.log(listProduct);
+  let getData = getValueInput();
+  let dataCheckOut = {
+    fullname: getData.fullName,
+    phonenumber: getData.phoneNumber,
+    address: getData.address,
+    email: getData.email,
+    products: listProduct,
+    date: getDate,
+    status: status,
+  };
+
+  console.log(dataCheckOut);
+
   let promise = axios({
     url: 'https://650f9b0d54d18aabfe9a203b.mockapi.io/api/v1/OderProduct',
     method: 'POST',
     data: dataCheckOut,
   });
-  promise.then((data) => {});
+
+  promise
+    .then((data) => {
+      successfulPayment();
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+    .finally(() => {
+      btnSubmit.disabled = false;
+    });
 };

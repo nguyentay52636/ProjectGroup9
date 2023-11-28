@@ -52,6 +52,7 @@ function infoLogin() {
           };
           localStorage.setItem('Login', JSON.stringify(status));
           localStorage.setItem('loggedInUser', userName);
+          localStorage.setItem('loggedIDUser', data.data[i].id);
           Swal.fire({
             position: 'center',
             icon: 'success',
@@ -59,6 +60,7 @@ function infoLogin() {
             showConfirmButton: false,
             timer: 1000,
           });
+          window.location.href = '../index.html';
 
           // Kiểm tra loại tài khoản và chuyển hướng
           checkUserTypeAndRedirect(data.data[i].type);

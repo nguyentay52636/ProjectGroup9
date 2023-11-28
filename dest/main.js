@@ -1,4 +1,6 @@
 // Schero
+// console.log(123);
+
 let handlehero = () => {
   let slider = document.querySelector('.schero__list');
   if (slider) {
@@ -147,6 +149,7 @@ function initLoading() {
   });
 }
 initLoading();
+
 //End Loading ........
 
 // const handleCarousel = () => {
@@ -267,7 +270,7 @@ handleCartNav();
 
 //============== GET DATA FORM PRODUCTS.JSON ==============
 let products = null;
-fetch('http://127.0.0.1:5500/database.json')
+fetch('https://650f9b0d54d18aabfe9a203b.mockapi.io/api/v1/capstonejs')
   .then((response) => response.json())
   .then((data) => {
     products = data;

@@ -1,0 +1,24 @@
+[
+    {
+    "fullname": "PHƯƠNG TÂY NGUYỄN",
+    "username": "tay52636",
+    "phonenumber": "0846777901",
+    "address": "Thắng kiên",
+    "email": "email 2",
+     "password": "123",
+    "products": [
+    {
+    "id": "3",
+    "name": "Samsung Galaxy M22",
+    "price": 45000,
+    "screen": "screen 70",
+    "backCamera": "Chính 12 MP & Phụ 64 MP, 12 MP",
+    "frontCamera": " 32 MP",
+    "img": "https://cdn.tgdd.vn/Products/Images/42/217536/samsung-galaxy-m51-trang-new-600x600-600x600.jpg",
+    "desc": "Thiết kế mang tính đột phá",
+    "type": "Samsung",
+    "quantity": 6
+    }
+    ]
+}]
+

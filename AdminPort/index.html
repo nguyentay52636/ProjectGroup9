@@ -3,7 +3,10 @@
   <head>
     <title>Admin Dashboard</title>
     <!-- font google -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap">
+    <!-- <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap"
+    /> -->
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link
       rel="stylesheet"
@@ -16,7 +19,6 @@
   <body>
     <section>
       <div class="sidebar">
-  
         <h1 class="logo">
           <i class="fa fa-user-circle" aria-hidden="true"></i>
           <p class="text__logo">Product Management</p>
@@ -27,25 +29,41 @@
         </div>
         <ul class="nav">
           <li>
-            
-            <a href=".././index.html"><i class="fa fa-windows"></i><p class="text__logo"> Home pages</p></a>
+            <a href=".././index.html"
+              ><i class="fa fa-windows"></i>
+              <p class="text__logo1">Home pages</p></a
+            >
           </li>
-          <li class="active">
-            <a><i class="fa fa-shopping-bag"></i><p class="text__logo">User</p></a>
+          <li class="active innerUser">
+            <a id="tableUser" onclick="changeTable(this)"
+              ><i class="fa fa-shopping-bag"></i>
+              <p class="text__logo1">User</p></a
+            >
           </li>
-          <li class="innerUser">
-            <a><i class="fa fa-tag"></i><p class="text__logo">Order</p></a>
+          <li class="innerOrder">
+            <a id="tableOrder" onclick="changeTable(this)"
+              ><i class="fa fa-tag"></i>
+              <p class="text__logo1">Order</p></a
+            >
           </li>
           <li>
-            <a><i class="fa fa-pie-chart"></i><p class="text__logo">Statistic</p></a>
+            <a
+              ><i class="fa fa-pie-chart"></i>
+              <p class="text__logo1">Statistic</p></a
+            >
           </li>
           <li id="innerProduct">
-            <a ><i class="fa fa-cube"></i><p class="text__logo">Product</p></a>
+            <a id="tableProduct" onclick="changeTable(this)"
+              ><i class="fa fa-cube"></i>
+              <p class="text__logo1">Product</p></a
+            >
           </li>
           <li>
-            <a><i class="fa fa-database"></i><p class="text__logo"> Stock</p></a>
+            <a
+              ><i class="fa fa-database"></i>
+              <p class="text__logo1">Stock</p></a
+            >
           </li>
-          
         </ul>
 
         <ul class="social">
@@ -73,7 +91,7 @@
               <div class="profile-div">
                 <p><i class="fa fa-user"></i> Profile</p>
                 <p><i class="fa fa-cog"></i> Settings</p>
-                <p><i class="fa fa-power-off " id="BtnLogout"></i> Log Out</p>
+                <p><i class="fa fa-power-off" id="BtnLogout"></i> Log Out</p>
               </div>
 
               <div class="notification-div">
@@ -84,7 +102,6 @@
 
             <div class="clearfix"></div>
           </div>
-          
 
           <br /><br />
           <div class="content">
@@ -93,7 +110,7 @@
 
             <table>
               <thead>
-                <tr>
+                <tr class="headerTable">
                   <th scope="col" width="50px">ID</th>
                   <th scope="col" width="100px">Name</th>
                   <th scope="col" width="290px">Address</th>
@@ -211,7 +228,6 @@
                 </tr>
               </tbody>
             </table>
-           
           </div>
           <!-- table Product  -->
           <div id="content__product">
@@ -220,23 +236,33 @@
             </button>
             <div class="search__product">
               <p>Search product:</p>
-        
-              <input id="searchProduct" class="form-control" type="text" placeholder="Input infomation Smart Phone"> 
+
+              <input
+                id="searchProduct"
+                class="form-control"
+                type="text"
+                placeholder="Input infomation Smart Phone"
+              />
             </div>
-            <div id="myModal" class="modal" >
-              <div class="modal-dialog">
+            <div id="myModal" class="modal">
+              <div class="modal-dialogProduct">
                 <div class="modal-content">
                   <div class="modal-header">
                     <span class="modal-title" id="exampleModalLongTitle"
                       >Information product</span
                     >
-                    <button id="iconClose" type="button" class="close" onclick="closeBtn()">
-                      <span >&times;</span>
+                    <button
+                      id="iconClose"
+                      type="button"
+                      class="close"
+                      onclick="closeBtn()"
+                    >
+                      <span>&times;</span>
                     </button>
                   </div>
 
                   <div class="modal-body">
-                    <div class="form-group">
+                    <div class="form-group1">
                       <input
                         type="text"
                         class="form-control"
@@ -244,10 +270,10 @@
                         name="name"
                         placeholder="Name"
                       />
-                      <br />
-                      <span id="tb-name"></span>
+        
+                      <span id="tbName"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group1">
                       <input
                         type="text"
                         class="form-control"
@@ -255,10 +281,10 @@
                         name="price"
                         placeholder="Price"
                       />
-                      <br />
-                      <span id="tb-price"></span>
+                    
+                      <span id="tbPrice"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group1">
                       <input
                         type="text"
                         class="form-control"
@@ -266,10 +292,10 @@
                         name="screen"
                         placeholder="Screen"
                       />
-                      <br />
-                      <span id="tb-screen"></span>
+                    
+                      <span id="tbScreen"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group1">
                       <input
                         type="text"
                         class="form-control"
@@ -277,10 +303,10 @@
                         name="backcamera"
                         placeholder="BackCamera"
                       />
-                      <br />
-                      <span id="tb-backcamera"></span>
+                    
+                      <span id="tbBackCamera"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group1">
                       <input
                         type="text"
                         class="form-control"
@@ -288,10 +314,10 @@
                         name="frontcamera"
                         placeholder="FrontCamera"
                       />
-                      <br />
-                      <span id="tb-frontcamera"></span>
+                      
+                      <span id="tbFrontCamera"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group1">
                       <input
                         type="text"
                         class="form-control"
@@ -301,16 +327,16 @@
                       />
                       <img
                         style="margin-top: 10px"
-                        width="100%"
+                        width="120px"
                         id="picture-preview"
                         src=""
                         alt=""
                         type="file"
                       />
-                      <br />
-                      <span id="tb-picture"></span>
+                    
+                      <span id="tbPicture"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group1">
                       <input
                         type="text"
                         class="form-control"
@@ -318,25 +344,25 @@
                         name="desc"
                         placeholder="Desc"
                       />
-                      <br />
-                      <span id="tb-desc"></span>
+                    
+                      <span id="tbDesc"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group1">
                       <!-- <input type="text" class="form-control"id="type" name="type" placeholder="Type"> -->
                       <select class="form-control" name="type" id="type">
                         <option value="">Loại sản phẩm</option>
                         <option value="Iphone">Iphone</option>
                         <option value="Samsung">Samsung</option>
                       </select>
-                      <br />
-                      <span id="tb-type"></span>
+                      
+                      <span id="tbType"></span>
                     </div>
                     <!-- Các phần còn lại trong modal body -->
                   </div>
                   <div class="modal-footer">
-                  <div id="btnEdit"><button type="button" id="btnAdd">
-                    Add
-                  </button></div>
+                    <div id="btnEdit">
+                      <button type="button" id="btnAdd">Add</button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -355,14 +381,14 @@
         <option value="Giam">sắp xếp giảm</option>
       </select>
     </div> -->
-                  <th scope="col" width="30px">Price</th>
+                  <th scope="col" width="40px">Price</th>
                   <th scope="col" width="60px">Screen</th>
                   <th scope="col" width="90px">BackCamera</th>
-                  <th scope="col" width="90px">FrontCamera</th>
+                  <th scope="col" width="50px">FrontCamera</th>
                   <th scope="col" width="80px">Picture</th>
                   <th scope="col" width="70px">Desc</th>
                   <th scope="col" width="70px">Type</th>
-                  <th scope="col" width="70px">Action</th>
+                  <th scope="col" width="60px">Action</th>
                 </tr>
               </thead>
               <tbody class="DanhSachSanPham"></tbody>
@@ -372,147 +398,271 @@
               <span id="currentPage">Trang 1</span>
               <button id="nextPage">Trang Sau</button>
             </div>
-            
           </div>
-              <!-- ACount -->
-           <div class="content__acount">
+          <!-- ACount -->
+          <div class="content__acount">
             <div class="search__person">
               <p>Search person :</p>
-              <br>
-              <input id="searchPerson" class="form-control" type="text" placeholder="Input infomation Smart Phone"> 
+              <br />
+              <input
+                id="searchPerson"
+                class="form-control"
+                type="text"
+                placeholder="Input infomation Smart Phone"
+              />
             </div>
             <button id="modalAdd" onclick="openModalPerson()">
               <p>Add person</p>
             </button>
-            
 
-      <table >
-        <thead>
-          <tr class="headerTable">
-            <th scope="col" width="15px">ID</th>
-            <th scope="col" width="100px" >User Name</th>
-            <th scope="col" width="80px" >Password</th>
-            <th scope="col" width="150px">Full name</th>
-            <th scope="col" width="170px">Email</th>
-            <th scope="col" width="35px">Type acount</th>
-            <th scope="col" width="80px">Action</th>
-          </tr>
-        </thead>
-        <tbody id="listAcount">
-         
-        </tbody>
-      </table>
-      <div class="pagination-container">
-        <button id="prevPage">Trang Trước</button>
-        <span id="currentPage">Trang 1</span>
-        <button id="nextPage">Trang Sau</button>
-      </div>
-      
-    </div>
+            <table>
+              <thead>
+                <tr class="headerTable">
+                  <th scope="col" width="25px">ID</th>
+                  <th scope="col" width="100px">User Name</th>
+                  <th scope="col" width="80px">Password</th>
+                  <th scope="col" width="150px">Full name</th>
+                  <th scope="col" width="170px">Email</th>
+                  <th scope="col" width="100px">Phone number</th>
+                  <th scope="col" width="45px">Type acount</th>
+                  <th scope="col" width="60px">Action</th>
+                </tr>
+              </thead>
+              <tbody id="listAcount"></tbody>
+            </table>
+            <div class="pagination-container">
+              <button id="prevPage">Trang Trước</button>
+              <span id="currentPage">Trang 1</span>
+              <button id="nextPage">Trang Sau</button>
+            </div>
+          </div>
 
-    
+          <!-- order  -->
+      <div id="content__order">
+        <div>
+          
+          <div class="search__order">
+            <p>Search order :</p>
+            <br />
+            <br>
+            <input
+              id="searchOrder"
+              class="form-control"
+              type="text"
+              placeholder="Input infomation Smart Phone"
+            />
+          </div>
+          <button id="modalAdd">
+            <p>Add person</p>
+          </button>
+          <br>
+          <br>
+
+          <table>
+            <thead>
+              <tr class="headerTable">
+                <th scope="col" width="25px">ID</th>
+                <th scope="col" width="110px">Full name</th>
+                <th scope="col" width="100px">Product</th>
+                <th scope="col" width="60px">Total price</th>
+                <th scope="col" width="90px">Date order</th>
+                <th scope="col" width="100px">Phone number</th>
+                <th scope="col" width="70px">Address</th>
+                <th scope="col" width="160px">Email</th>
+                <th scope="col" width="50px">Status</th>
+                <th id="THaction" scope="col" width="80x">Action</th>
+              </tr>
+            </thead>
+            <tbody id="listOrder">
+              <tr>
+                <td>1</td>
+                <td>tay</td>
+                <td>0123456789</td>
+                <td>123456789</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="pagination-container">
+            <button id="prevPage">Trang Trước</button>
+            <span id="currentPage">Trang 1</span>
+            <button id="nextPage">Trang Sau</button>
+          </div>
         </div>
       </div>
+        </div>
+      </div>
+      <!-- Noti Modal -->
+      <div id="ModalNotify">
+        <div class="modal-order">
+          <div class="modal-content">
+        <div class="headerModal">
+            <h2>Infomation order</h2>
+        </div>
+        <div class="modal-body">
+        <div class="form-group">
+           <div class="input-group">
+            <h3>Full name</h3>
+           </div>
+           <span id="NotiName"> </span>
+       
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+             <h3>Name product</h3>
+            </div>
+            <span id="NotiProduct"></span>
+         </div>
+         <div class="form-group">
+            <div class="input-group">
+             <h3>Total price</h3>
+            </div>
+            <span id="NotiPrice"></span>
+         </div>
+         <div class="form-group">
+            <div class="input-group">
+             <h3>Phone number</h3>
+            </div>
+            <span id="NotiPhone"></span>
+         </div>
+         <div class="form-group">
+            <div class="input-group">
+             <h3>Address</h3>
+            </div>
+            <span id="NotiAddress"></span>
+         </div>
+         <div class="form-group">
+            <div class="input-group">
+             <h3>Date order</h3>
+            </div>
+            <span id="NotiDate"></span>
+         </div>
+         <div class="form-group">
+            <div class="input-group">
+             <h3>Status</h3>
+            </div>
+            <span id="NotiStatus"></span>
+         </div>
+         <div id="form-groupBtn">
+            <button id="btnSplit">Close</button>
+            <!-- <button id="btnConfirm">Cancel order</button> -->
 
+
+            </div>
+            
+         </div>
+        </div>
+        </div>
+      </div>
+     
     </section>
     <!-- modalPerson -->
-      <div id="myModalPerson" class="modal">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <span class="modal-title" id="exampleModalLongTitle"
-                      >Information person</span
-                    >
-                    <button id="iconClose" type="button" class="close" onclick="closeBtn()">
-                      <span>&times;</span>
-                    </button>
-                  </div>
-                  
+    <div id="myModalPerson" class="modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="modal-title" id="exampleModalLongTitle"
+              >Information person</span
+            >
+            <button
+              id="iconClose"
+              type="button"
+              class="close"
+              onclick="closeBtn()"
+            >
+            <span>&times;</span>
+            </button>
+          </div>
 
-                  <div class="modal-body">
-                    <div class="form-group">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="namePerson"
-                        name="name"
-                        placeholder="User name"
-                      />
-                      <br />
-                      <span id="tb-namePerson"></span>
-                    </div>
-                  
-                    <div class="form-group">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="fullnamePerson"
-                        name="screen"
-                        placeholder="Full name"
-                      />
-                      <br />
-                      <span id="tb-fullname"></span>
-                    </div>
-                    <div class="form-group">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="emailPerson"
-                        name="email"
-                        placeholder="Email"
-                      />
-                      <br />
-                      <span id="tb-email"></span>
-                    </div>
-                    <div class="form-group">
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="passwordPerson"
-                        name="password"
-                        placeholder="Password"
-                      />
-                      <br />
-                      <span id="tb-password"></span>
-                    </div>
-                    
-                    
-                  
-                    <div class="form-group">
-                    
-                      <select class="form-control" name="typeacount" id="typePerson">
-
-                        <option value="user">User</option>
-                        <option value="admin">Admin</option>
-                      </select>
-                      <br />
-                      <span id="tb-typeacount"></span>
-                    </div>
-                    <!-- Các phần còn lại trong modal body -->
-                  </div>
-                  <div class="modal-footer">
-                  <div id="btnEditPerson" >
-                    <button  type="button" id="btnAddPerson" >
-                    Add
-                  </button>
-                </div>
-                  
-                  </div>
-                </div>
-              </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="namePerson"
+                name="name"
+                placeholder="User name"
+              />
+              <br />
+              <span id="tb-namePerson"></span>
             </div>
+
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="fullnamePerson"
+                name="screen"
+                placeholder="Full name"
+              />
+              <br />
+              <span id="tb-fullnamePerson"></span>
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="emailPerson"
+                name="email"
+                placeholder="Email"
+              />
+              <br />
+              <span id="tb-emailPerson"></span>
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="phoneNumberPerson"
+                name="phonenumber"
+                placeholder="Phone number"
+              />
+              <br />
+              <span id="tb-phonenumberPerson"></span>
+            </div>
+
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="passwordPerson"
+                name="password"
+                placeholder="Password"
+              />
+              <br />
+              <span id="tb-passwordPerson"></span>
+            </div>
+
+            <div class="form-group">
+              <select class="form-control" name="typeacount" id="typePerson">
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+              </select>
+              <br />
+              <span id="tb-typeacount"></span>
+            </div>
+            <!-- Các phần còn lại trong modal body -->
+          </div>
+          <div class="modal-footer">
+            <div id="btnEditPerson">
+              <button type="button" id="btnAddPerson">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <br />
     <br />
-    <br>  
-    <br>
-    <br>
+    <br />
+    <br />
+    <br />
+    <!-- info order  -->
    
     <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.0/axios.min.js"
-    integrity="sha512-WrdC3CE9vf1nBf58JHepuWT4x24uTacky9fuzw2g/3L9JkihgwZ6Cfv+JGTtNyosOhEmttMtEZ6H3qJWfI7gIQ=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  ></script>
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.0/axios.min.js"
+      integrity="sha512-WrdC3CE9vf1nBf58JHepuWT4x24uTacky9fuzw2g/3L9JkihgwZ6Cfv+JGTtNyosOhEmttMtEZ6H3qJWfI7gIQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -537,109 +687,19 @@
         $(this).addClass('active');
       });
     </script>
+
     <script>
-      const $a = document.querySelector.bind(document);
 
-      $a('#innerProduct').onclick = () => {
-        const content = $a('.content');
-        content.style.display = 'none';
-        $a('#content__product').style.display = 'block';
-        $a('.content__acount').style.display = 'none';
-      };
-
-      $a('.active').onclick = () => {
-        const content = $a('.content');
-        content.style.display = 'block';
-        $a('#content__product').style.display = 'none';
-        $a('.content__acount').style.display = 'block';
-        $a('.content').style.display='none'
-        //modal
-      };
+      document.querySelector('#BtnLogout').addEventListener('click', () => {
+        setTimeout(() => {
+          window.location.href = '../index.html';
+        }, 200);
+      });
     </script>
-    <script>
-    function closeBtn(){
-      const ModaProduct =$a('#myModal')  ;
-      const ModalPerson =   $a('#myModalPerson') ; 
- if(modalPerson) {
-  ModalPerson.style.display = "none";
- } else if(ModaProduct) {
-  ModaProduct.style.display = "none";
- }
- }
-
-      
-        function openModalPerson(){
-          let modal = document.getElementById('myModalPerson');
-          modal.style.display = 'block';
-        document.addEventListener('click', function (event) {
-            if (event.target == modal) {
-              modal.style.display = 'none';
-            }
-          });
-        }
-   
-        function openModal() {
-          let modal = document.getElementById('myModal');
-          let modalPerson = $a('#myModalPerson');
-        
-          // Hiển thị cả hai modal
-          modal.style.display = 'block';
-          modalPerson.style.display = 'none';
-        
-          // Đăng ký sự kiện cick bên ngoài modal
-        document.addEventListener('click', function (event) {
-            if (event.target == modal) {
-              // Ẩn cả hai modal nếu click bên ngoài
-              modal.style.display = 'none';
-              modalPerson.style.display = 'none';
-            }
-          });
-        }
-    /*  document.addEventListener('click',()=> {
-        $a('#myModalPerson').style.display = 'none'
-      })*/
-   
-      /*a('#iconClose').onclick = () => {
-        let modal = document.getElementById('myModal');
-        modal.style.display = 'none';
-        let modalPerson =   $a('#myModalPerson');
-        modalPerson.style.display = 'none';
-      };*/
-      //tab
-      $a('.btnCloseTab').addEventListener('click', () => {
-        if ($a('.sidebar').style.width === '65px') {
-          $a('#overLayout').style.width = '265px';
-          $a('.text__logo').style.display = 'block';
-          $a('.active').style.display = 'none';
-          $a('.sidebar').style.width = '20%';
-          $a('.btnCloseTab .fa-angle-left').style.display = 'block';
-          $a('.btnCloseTab .fa-chevron-right').style.display = 'none';
-          $a('.btnCloseTab').style.left = '265px';
-          $a('content__acount').style.marginLeft = '23px';
-          $a('.nav').style.marginLeft = '14px' ;
-          $a('.nav li a .text__logo').style.display = 'none';
-         $a('.main').style.marginLeft = '150px';
-          
-        } else {
-          $a('#overLayout').style.width = '65px';
-          $a('.sidebar').style.width = '65px';
-          $a('.btnCloseTab .fa-angle-left').style.display = 'none';
-          $a('.btnCloseTab .fa-chevron-right').style.display = 'block';
-          $a('.btnCloseTab').style.left = '50px';
-          $a('.text__logo').style.display = 'none';
-          $a('.nav .active').style.display='none';
-          $a('.main').style.marginLeft = '150px';
-
-   }});
-    
-      
-      $a('#BtnLogout').addEventListener('click',()=> {
-       setTimeout(()=> {
-        window.location.href ='../index.html'
-       },200)
-      })
-    </script>
-   <!-- <script type="module" src="./src/Services/renderListPerson.js"></script> -->
+    <!-- <script type="module" src="./src/Services/renderListPerson.js"></script> -->
+    <script src="./src/JS_Style/style.js"></script>
     <script type="module" src="./src/Services/main.js"></script>
+    <script type="module" src="./src/Services/renderCartModal.js"></script>
   </body>
-</html> 
+</html>
+
